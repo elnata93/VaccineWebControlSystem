@@ -43,7 +43,6 @@ namespace VaccineWebControlSystem.Consultas
         protected void ImprimirButton_Click1(object sender, EventArgs e)
         {
             Reportes.VaccineReportViewer viewer = new Reportes.VaccineReportViewer();
-
             Response.Redirect("/Reportes/HistorialesReportViewer.aspx");
         }
     }
