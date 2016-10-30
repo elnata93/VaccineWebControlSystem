@@ -11,7 +11,6 @@ namespace BLL
     {
         ConexionDb conexion = new ConexionDb();
         public int usuarioId { get; set; }
-        public string fecha { get; set; }
         public string imagen { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
@@ -28,7 +27,6 @@ namespace BLL
         public Usuarios()
         {
             this.usuarioId = 0;
-            this.fecha = "";
             this.imagen = "";
             this.nombre = "";
             this.apellido = "";
@@ -42,10 +40,9 @@ namespace BLL
             this.contrasena = "";
         }
 
-        public Usuarios(int usuarioid,int ciudadid,string fecha,string imagen,string nombre,string apellido,string direccion,string cedula,string telefono,string email,string nombreusuario,string tipousuario,string contrasena)
+        public Usuarios(int usuarioid,int ciudadid,string imagen,string nombre,string apellido,string direccion,string cedula,string telefono,string email,string nombreusuario,string tipousuario,string contrasena)
         {
             this.usuarioId = usuarioid;
-            this.fecha = fecha;
             this.imagen = imagen;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -65,7 +62,7 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("insert into Usuarios(Fecha,Imagen,Nombres,Apellidos,Direccion,Cedula,Telefono,Email,CiudadId,NombresUsuarios,TipoUsuario,Contrasena) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}','{11}')",this.fecha,this.imagen,this.nombre,this.apellido,this.direccion,this.Cedula,this.telefono,this.email,this.ciudadId,this.nommbreUsuario,this.tipoUsuario,this.contrasena));
+                retorno = conexion.Ejecutar(String.Format("insert into Usuarios(Imagen,Nombres,Apellidos,Direccion,Cedula,Telefono,Email,CiudadId,NombresUsuarios,TipoUsuario,Contrasena) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')",this.imagen,this.nombre,this.apellido,this.direccion,this.Cedula,this.telefono,this.email,this.ciudadId,this.nommbreUsuario,this.tipoUsuario,this.contrasena));
             }
             catch (Exception ex)
             {
@@ -79,7 +76,7 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("update Usuarios set Fecha='{0}',Imagem='{1}',Nombres='{2}',Apellidos='{3}',Direccion='{4}',Cedula='{5}',Telefono='{6}',Email='{7}',CiudadId={8},NombreUsuarios='{9}',TipoUsuario='{10}',Contrasena='{11}' where UsuarioId={12} ", this.fecha, this.imagen, this.nombre, this.apellido, this.direccion, this.Cedula, this.telefono, this.email, this.ciudadId, this.nommbreUsuario, this.tipoUsuario, this.contrasena,this.usuarioId));
+                retorno = conexion.Ejecutar(String.Format("update Usuarios set Imagem='{1}',Nombres='{2}',Apellidos='{3}',Direccion='{4}',Cedula='{5}',Telefono='{6}',Email='{7}',CiudadId={8},NombreUsuarios='{9}',TipoUsuario='{10}',Contrasena='{11}' where UsuarioId={12} ", this.imagen, this.nombre, this.apellido, this.direccion, this.Cedula, this.telefono, this.email, this.ciudadId, this.nommbreUsuario, this.tipoUsuario, this.contrasena,this.usuarioId));
             }
             catch (Exception ex)
             {
@@ -112,9 +109,9 @@ namespace BLL
                 data = conexion.ObtenerDatos("Select * from Usuarios where UsuarioId= " + IdBuscado);
                 if (data.Rows.Count > 0)
                 {
-                    this.fecha = data.Rows[0]["Fecha"].ToString();
-                    this.imagen = data.Rows[0]["Imagen"].ToString();
+                    
                     this.usuarioId = (int)data.Rows[0]["UsuarioId"];
+                    this.imagen = data.Rows[0]["Imagen"].ToString();
                     this.nombre = data.Rows[0]["Nombres"].ToString();
                     this.apellido = data.Rows[0]["Apellidos"].ToString();
                     this.direccion = data.Rows[0]["Direccion"].ToString();

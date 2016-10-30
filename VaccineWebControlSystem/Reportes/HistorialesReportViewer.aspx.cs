@@ -13,10 +13,10 @@ namespace VaccineWebControlSystem.Reportes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            ReporteHistoriales();
         }
 
-        public void ReporteHistoriales()
+        private void ReporteHistoriales()
         {
             if (!IsPostBack)
             {

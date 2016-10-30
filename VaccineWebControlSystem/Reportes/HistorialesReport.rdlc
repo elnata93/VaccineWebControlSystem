@@ -37,7 +37,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Historial Id</Value>
+                              <Value>Id</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -435,10 +435,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Centro de Salud Rodriguez</Value>
+                <Value>Vaccine Web Control System</Value>
                 <Style>
-                  <FontSize>24pt</FontSize>
-                  <Color>DarkBlue</Color>
+                  <FontSize>20pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -593,7 +592,6 @@
                 <Value>Historial de Vacunas</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
-                  <Color>Red</Color>
                 </Style>
               </TextRun>
             </TextRuns>

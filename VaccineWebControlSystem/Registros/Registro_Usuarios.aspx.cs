@@ -18,8 +18,7 @@ namespace VaccineWebControlSystem.Registros
             {
                
             }
-            FechaTextBox.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            FechaTextBox.Enabled = false;
+            
             LlenarDropDownList();
         }
 
@@ -41,9 +40,7 @@ namespace VaccineWebControlSystem.Registros
 
         private void LlenarCampos()
         {
-            //user.fecha = DateTime.Now.ToString("dd/MM/yyyy");
-            FechaTextBox.Text = user.fecha;
-
+                       
             NombreTextBox.Text = user.nombre;
             ApellidoTextBox.Text = user.apellido;
             DireccionTextBox.Text = user.direccion;
@@ -60,7 +57,7 @@ namespace VaccineWebControlSystem.Registros
         {
             if (IdTextBox.Text == "")
             {
-                Response.Write("<script>alert('Introdusca el ID');</script>");
+                Mensajes("Introdusca el ID");
             }
             else
             if (Id(IdTextBox.Text) != 0)
@@ -71,20 +68,23 @@ namespace VaccineWebControlSystem.Registros
                 }
                 else
                 {
-                    Response.Write("<script>alert('Id no exite');</script>");
+                    Mensajes("Id no exite");
                 }
             }
             else
             {
-                Response.Write("<script>alert('Id no encontrado');</script>");
+                Mensajes("Id no encontrado");
             }
+        }
+
+        private void Mensajes(string mensaje)
+        {
+            Response.Write("<script>alert('"+mensaje +"');</script>");
         }
 
         private void Limpiar()
         {
             IdTextBox.Text = "";
-            FechaTextBox.Text = FechaTextBox.Text;
-
             NombreTextBox.Text = "";
             ApellidoTextBox.Text = "";
             DireccionTextBox.Text = "";
@@ -107,8 +107,6 @@ namespace VaccineWebControlSystem.Registros
         private void LlenarDatos()
         {
             
-            DateTime dt = Convert.ToDateTime(FechaTextBox.Text);
-            user.fecha = dt.ToString();
             user.nombre = NombreTextBox.Text ;
             user.apellido = ApellidoTextBox.Text;
             user.direccion = DireccionTextBox.Text;

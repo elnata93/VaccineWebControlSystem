@@ -12,14 +12,14 @@ namespace BLL
         ConexionDb conexion = new ConexionDb();
 
         public int vacunaId { get; set; }
-        public string nombreVacuna { get; set; }
+        public string Descripcion { get; set; }
 
         public override bool Insertar()
         {
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("insert into Vacunas(NombreVacuna) values('{0}')",this.nombreVacuna));
+                retorno = conexion.Ejecutar(String.Format("insert into Vacunas(Descripcion) values('{0}')", this.Descripcion));
             }
             catch (Exception ex)
             {
@@ -34,7 +34,7 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("update Vacunas set NombreVacuna='{0}' where VacunaId={1}",this.nombreVacuna,this,vacunaId));
+                retorno = conexion.Ejecutar(String.Format("update Vacunas set Descripcion='{0}' where VacunaId={1}", this.Descripcion, this,vacunaId));
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace BLL
                 if(data.Rows.Count > 0)
                 {
                     this.vacunaId = (int)data.Rows[0]["VacunaId"];
-                    this.nombreVacuna = data.Rows[0]["NombreVacuna"].ToString();
+                    this.Descripcion = data.Rows[0]["Descripcion"].ToString();
 
                 }
                 return data.Rows.Count > 0;

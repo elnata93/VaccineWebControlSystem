@@ -28,9 +28,7 @@
                                 <td>&nbsp;</td>
                                 <td class="auto-style3">&nbsp;</td>
                                 <td>
-                                    <asp:Label ID="Label2" runat="server" Text="Fecha:"></asp:Label>
-                                    <asp:TextBox ID="FechaTextBox" runat="server" Width="80px"></asp:TextBox>
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
