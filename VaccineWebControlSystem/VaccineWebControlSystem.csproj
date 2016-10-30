@@ -95,8 +95,12 @@
     <Content Include="js\plugins\morris\morris.min.js" />
     <Content Include="js\plugins\morris\raphael.min.js" />
     <Content Include="Registros\Registro_Ciudades.aspx" />
+    <Content Include="Registros\Registro_Municipios.aspx" />
+    <Content Include="Registros\Registro_Pacientes.aspx" />
+    <Content Include="Registros\Registro_Provincias.aspx" />
     <Content Include="Registros\Registro_Usuarios.aspx" />
     <Content Include="Registros\Registro_Hitoriales.aspx" />
+    <Content Include="Registros\Registro_Vacunas.aspx" />
     <Content Include="Reportes\HistorialesReportViewer.aspx" />
     <Content Include="Reportes\UsuariosReportViewer.aspx" />
     <Content Include="Web.config" />
@@ -143,6 +147,27 @@
     <Compile Include="Registros\Registro_Ciudades.aspx.designer.cs">
       <DependentUpon>Registro_Ciudades.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Registros\Registro_Municipios.aspx.cs">
+      <DependentUpon>Registro_Municipios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registros\Registro_Municipios.aspx.designer.cs">
+      <DependentUpon>Registro_Municipios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\Registro_Pacientes.aspx.cs">
+      <DependentUpon>Registro_Pacientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registros\Registro_Pacientes.aspx.designer.cs">
+      <DependentUpon>Registro_Pacientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\Registro_Provincias.aspx.cs">
+      <DependentUpon>Registro_Provincias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registros\Registro_Provincias.aspx.designer.cs">
+      <DependentUpon>Registro_Provincias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Registros\Registro_Usuarios.aspx.cs">
       <DependentUpon>Registro_Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,6 +181,13 @@
     </Compile>
     <Compile Include="Registros\Registro_Hitoriales.aspx.designer.cs">
       <DependentUpon>Registro_Hitoriales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\Registro_Vacunas.aspx.cs">
+      <DependentUpon>Registro_Vacunas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registros\Registro_Vacunas.aspx.designer.cs">
+      <DependentUpon>Registro_Vacunas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes\HistorialesReportViewer.aspx.cs">
       <DependentUpon>HistorialesReportViewer.aspx</DependentUpon>

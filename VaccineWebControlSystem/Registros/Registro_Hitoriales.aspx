@@ -35,7 +35,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
             <div class="panel panel-success">
-                <div class="panel-heading">Registro de Usuarios</div>
+                <div class="panel-heading">Registro de Historial</div>
                 <div class="panel-body">
                     <div class="form-horizontal col-md-12" role="form">
                         <table style="width: 100%;">
