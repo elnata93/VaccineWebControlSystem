@@ -10,26 +10,30 @@ namespace VaccineWebControlSystem.Registros
 {
     public partial class Registro_Usuarios : System.Web.UI.Page
     {
-        Usuarios user = new Usuarios();
-        Ciudades ciudad = new Ciudades();
+        
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-               
+                LlenarDropDownList();
             }
-            
-            LlenarDropDownList();
         }
+
 
         private void LlenarDropDownList()
         {
+            Ciudades ciudad = new Ciudades();
             CiudadDropDownList.DataSource = ciudad.Listado(" * ", " 1=1 ", " ");
             CiudadDropDownList.DataTextField = "Descripcion";
             CiudadDropDownList.DataValueField = "CiudadId";
             CiudadDropDownList.DataBind();
-            
+
         }
+
+       
+
+        
 
         private int Id(string cadena)
         {
@@ -38,9 +42,8 @@ namespace VaccineWebControlSystem.Registros
             return id;
         }
 
-        private void LlenarCampos()
+        private void LlenarCampos(Usuarios user)
         {
-                       
             NombreTextBox.Text = user.nombre;
             ApellidoTextBox.Text = user.apellido;
             DireccionTextBox.Text = user.direccion;
@@ -55,31 +58,30 @@ namespace VaccineWebControlSystem.Registros
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
-            if (IdTextBox.Text == "")
-            {
-                Mensajes("Introdusca el ID");
-            }
-            else
-            if (Id(IdTextBox.Text) != 0)
-            {
-                if (user.Buscar(Id(IdTextBox.Text)))
-                {
-                    LlenarCampos();
-                }
-                else
-                {
-                    Mensajes("Id no exite");
-                }
-            }
-            else
-            {
-                Mensajes("Id no encontrado");
-            }
-        }
+            Usuarios user = new Usuarios();
+            Utility.ShowToastr(this, "Introdusca el ID","Error","Success");
+            //Page.ClientScript.RegisterStartupScript(this.GetType(), "toastr_message", "toastr.success('TODO BIEN', 'BIEN')", true);
+            //if (IdTextBox.Text == "")
+            //{
+            //}
+            //else
+            //if (Id(IdTextBox.Text) != 0)
+            //{
+            //    if (user.Buscar(Id(IdTextBox.Text)))
+            //    {
+            //        LlenarCampos(user);
+            //    }
+            //    else
+            //    {
 
-        private void Mensajes(string mensaje)
-        {
-            Response.Write("<script>alert('"+mensaje +"');</script>");
+            //        Utility.ShowToastr(this, "Id no exite", "Error", "Success");
+            //    }
+            //}
+            //else
+            //{
+            //    Utility.ShowToastr(this, "Id no encontrado", "Error", "Success");
+
+            //}
         }
 
         private void Limpiar()
@@ -98,16 +100,15 @@ namespace VaccineWebControlSystem.Registros
             ConfContrasenaTextBox.Text = "";
 
         }
-        
+
         protected void NuevoButton_Click(object sender, EventArgs e)
         {
             Limpiar();
         }
-        
-        private void LlenarDatos()
+
+        private void LlenarDatos(Usuarios user)
         {
-            
-            user.nombre = NombreTextBox.Text ;
+            user.nombre = NombreTextBox.Text;
             user.apellido = ApellidoTextBox.Text;
             user.direccion = DireccionTextBox.Text;
             user.Cedula = CedulaTextBox.Text;
@@ -121,26 +122,29 @@ namespace VaccineWebControlSystem.Registros
 
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
+            Usuarios user = new Usuarios();
             if (NombreTextBox.Text.Length == 0 || ApellidoTextBox.Text.Length == 0 || DireccionTextBox.Text.Length == 0 ||
                 TelefonoTextBox.Text.Length == 0 || EmailTextBox.Text.Length == 0 || CiudadDropDownList.Text.Length == 0 ||
                 NombreUsuarioTextBox.Text.Length == 0 || TipoUsuarioDropDownList.Text.Length == 0 ||
                 ContrasenaTextBox.Text.Length == 0 || ConfContrasenaTextBox.Text.Length == 0)
             {
-                Response.Write("<script>alert('Hay campos sin completar');<script>");
+                
+                Utility.ShowToastr(this, "Hay campos sin completar", "Error", "Success");
+
             }
             else
 
             if (Id(IdTextBox.Text) == 0)
             {
 
-                LlenarDatos();
+                LlenarDatos(user);
                 if (user.Insertar())
                 {
-                    Response.Write("<script>alert('Material Guardado');<script>");
+                    //Mensajes("Usuario Guardado");
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error al Guardar');</script>");
+                    //Mensajes("Error al Guardar");
                 }
                 //Limpiar();
             }
@@ -149,14 +153,14 @@ namespace VaccineWebControlSystem.Registros
             {
                 if (user.Buscar(Id(IdTextBox.Text)))
                 {
-                    LlenarDatos();
+                    LlenarDatos(user);
                     if (user.Editar())
                     {
-                        Response.Write("<script>alert('Material Guardado');<script>");
+                        //Mensajes("Usuario Guardado");
                     }
                     else
                     {
-                        Response.Write("<script>alert('Error al Guardar');</script>");
+                        //Mensajes("Error al Guardar");
                     }
                 }
                 //Limpiar();
@@ -165,21 +169,22 @@ namespace VaccineWebControlSystem.Registros
 
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
+            Usuarios user = new Usuarios();
             if (IdTextBox.Text.Length == 0)
             {
-                Response.Write("<script>alert('Debe Ingresar el ID');<script>");
+                //Mensajes("Debe Ingresar el ID");
             }
             else
             {
                 if (user.Buscar(Id(IdTextBox.Text)))
                 {
                     user.Eliminar();
-                    Response.Write("<script>alert('Usuario Eliminado');<script>");
+                    //Mensajes("Usuario Eliminado");
                     //Limpiar();
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error Usuario no se Elimino');<script>");
+                    //Mensajes("Error Usuario no se Elimino");
                     //Limpiar();
                 }
             }

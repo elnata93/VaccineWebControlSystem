@@ -40,7 +40,7 @@ namespace VaccineWebControlSystem.Consultas
                 }
             }
             DataTable dt = new DataTable();
-            dt = user.Listado("UsuarioId,Fecha,Nombres,Apellidos,Direccion,Cedula,Telefono,Email,CiudadId,NombresUsuarios,TipoUsuario ", filtro, "");
+            dt = user.Listado("UsuarioId,Nombres,Apellidos,Direccion,Cedula,Telefono,Email,CiudadId,NombresUsuarios,TipoUsuario ", filtro, "");
             ConsultaGridView.DataSource = dt;
             ConsultaGridView.DataBind();
         }

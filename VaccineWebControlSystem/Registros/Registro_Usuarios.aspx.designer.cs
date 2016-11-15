@@ -40,6 +40,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.Button SubirButton;
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// IdTextBox control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.Button BuscarButton;
         
         /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
         /// NombreTextBox control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox NombreTextBox;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
         /// ApellidoTextBox control.
@@ -76,6 +103,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.TextBox ApellidoTextBox;
         
         /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+        
+        /// <summary>
         /// DireccionTextBox control.
         /// </summary>
         /// <remarks>
@@ -83,6 +119,15 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DireccionTextBox;
+        
+        /// <summary>
+        /// Label5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
         /// CedulaTextBox control.
@@ -94,6 +139,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.TextBox CedulaTextBox;
         
         /// <summary>
+        /// Label6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label6;
+        
+        /// <summary>
         /// TelefonoTextBox control.
         /// </summary>
         /// <remarks>
@@ -101,6 +155,15 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TelefonoTextBox;
+        
+        /// <summary>
+        /// Label7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
         /// EmailTextBox control.
@@ -112,6 +175,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.TextBox EmailTextBox;
         
         /// <summary>
+        /// Label8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label8;
+        
+        /// <summary>
         /// CiudadDropDownList control.
         /// </summary>
         /// <remarks>
@@ -119,6 +191,15 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList CiudadDropDownList;
+        
+        /// <summary>
+        /// Label9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
         /// NombreUsuarioTextBox control.
@@ -130,6 +211,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.TextBox NombreUsuarioTextBox;
         
         /// <summary>
+        /// Label10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label10;
+        
+        /// <summary>
         /// TipoUsuarioDropDownList control.
         /// </summary>
         /// <remarks>
@@ -139,6 +229,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.DropDownList TipoUsuarioDropDownList;
         
         /// <summary>
+        /// Label11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label11;
+        
+        /// <summary>
         /// ContrasenaTextBox control.
         /// </summary>
         /// <remarks>
@@ -146,6 +245,15 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ContrasenaTextBox;
+        
+        /// <summary>
+        /// Label12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
         /// ConfContrasenaTextBox control.

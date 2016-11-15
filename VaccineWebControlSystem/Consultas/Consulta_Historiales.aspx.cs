@@ -35,7 +35,7 @@ namespace VaccineWebControlSystem.Consultas
                 }
             }
             DataTable dt = new DataTable();
-            dt = historial.Listado("HistorialId,Fecha,CentroSalud,Provincia,Municipio ", filtro, "");
+            dt = historial.Listado("HistorialId,Fecha,CentroSalud,ProvinciaId,MunicipioId ", filtro, "");
             ConsultaGridView.DataSource = dt;
             ConsultaGridView.DataBind();
         }

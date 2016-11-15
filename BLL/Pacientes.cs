@@ -17,7 +17,7 @@ namespace BLL
         public int Sexo { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
-        public string  Cedula { get; set; }
+        public string Cedula { get; set; }
 
         public Pacientes()
         {
@@ -30,9 +30,9 @@ namespace BLL
             this.Telefono = "";
             this.Cedula = "";
         }
-        
 
-        public Pacientes(int pacienteId, string nombres, string apellidos, int edad, int sexo, string direccion, string telefono,string cedula)
+
+        public Pacientes(int pacienteId, string nombres, string apellidos, int edad, int sexo, string direccion, string telefono, string cedula)
         {
             this.PacienteId = pacienteId;
             this.Nombres = nombres;
@@ -50,14 +50,14 @@ namespace BLL
             try
             {
                 retorno = conexion.Ejecutar(String.Format("Insert Into Pacientes(Nombres,Apellidos,Edad,Sexo,Direccion,Telefono,Cedula) values('{0}','{1}',{2},{3},'{4}','{5}','{6}') ",
-                    this.Nombres, this.Apellidos, this.Edad, this.Sexo, this.Direccion, this.Telefono,this.Cedula));
+                    this.Nombres, this.Apellidos, this.Edad, this.Sexo, this.Direccion, this.Telefono, this.Cedula));
 
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return retorno ;
+            return retorno;
         }
 
         public override bool Editar()
@@ -67,7 +67,7 @@ namespace BLL
             {
                 retorno = conexion.Ejecutar(String.Format("update Pacientes set Nombres='{0}',Apellidos='{1}',Edad={2},Sexo={3},Direccion='{4}',Telefono='{5}',Cedula = {6} where PacienteId = {7} ",
                     this.Nombres, this.Apellidos, this.Edad, this.Sexo, this.Direccion, this.Telefono, this.Cedula, this.PacienteId));
-               
+
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("delete from Pacientes where PacienteId={0}" + "delete from PacientesVacunas where PacienteId={0}", this.PacienteId));
+                retorno = conexion.Ejecutar(String.Format("delete from Pacientes where PacienteId={0} ", this.PacienteId));
 
             }
             catch (Exception ex)
@@ -95,7 +95,6 @@ namespace BLL
         public override bool Buscar(int IdBuscado)
         {
             DataTable data = new DataTable();
-            DataTable dt = new DataTable();
             data = conexion.ObtenerDatos(String.Format("select * from Pacientes where PacienteId= " + IdBuscado));
 
             if (data.Rows.Count > 0)
@@ -108,7 +107,7 @@ namespace BLL
                 this.Direccion = data.Rows[0]["Direccion"].ToString();
                 this.Telefono = data.Rows[0]["Telefono"].ToString();
                 this.Cedula = data.Rows[0]["Cedula"].ToString();
-                
+
             }
             return data.Rows.Count > 0;
         }

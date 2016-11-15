@@ -38,7 +38,7 @@ create table Pacientes(PacienteId int primary key identity(1,1),
 Nombres varchar(30),
 Apellidos varchar(30),
 Edad int,
-Sexo bit,
+Sexo int,
 Direccion varchar(100),
 Telefono varchar(15),
 Cedula varchar(20)
@@ -54,7 +54,8 @@ PacienteId int,
 go
 create table HistorialDetalle(Id int primary key identity(1,1),
 HistorialId int,
+EsUnica int,
 VacunaId int references Vacunas(VacunaId),
-EsUnica bit,
-Dosis int
+Dosis int,
+Fecha data
 );

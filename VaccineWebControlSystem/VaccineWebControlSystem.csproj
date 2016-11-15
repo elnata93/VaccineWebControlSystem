@@ -76,6 +76,7 @@
     <Content Include="css\plugins\morris.css" />
     <Content Include="css\sb-admin-rtl.css" />
     <Content Include="css\sb-admin.css" />
+    <Content Include="css\toastr.min.css" />
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
@@ -83,6 +84,8 @@
     <Content Include="Default.aspx" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery-1.10.2.js" />
+    <Content Include="js\jquery-1.9.1.min.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\plugins\flot\excanvas.min.js" />
     <Content Include="js\plugins\flot\flot-data.js" />
@@ -94,15 +97,17 @@
     <Content Include="js\plugins\morris\morris.js" />
     <Content Include="js\plugins\morris\morris.min.js" />
     <Content Include="js\plugins\morris\raphael.min.js" />
+    <Content Include="js\toastr.min.js" />
     <Content Include="Registros\Registro_Ciudades.aspx" />
     <Content Include="Registros\Registro_Municipios.aspx" />
     <Content Include="Registros\Registro_Pacientes.aspx" />
     <Content Include="Registros\Registro_Provincias.aspx" />
     <Content Include="Registros\Registro_Usuarios.aspx" />
-    <Content Include="Registros\Registro_Hitoriales.aspx" />
+    <Content Include="Registros\Registro_Historiales.aspx" />
     <Content Include="Registros\Registro_Vacunas.aspx" />
     <Content Include="Reportes\HistorialesReportViewer.aspx" />
     <Content Include="Reportes\UsuariosReportViewer.aspx" />
+    <Content Include="Reutilizable\StarRegister.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -175,12 +180,12 @@
     <Compile Include="Registros\Registro_Usuarios.aspx.designer.cs">
       <DependentUpon>Registro_Usuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Registros\Registro_Hitoriales.aspx.cs">
-      <DependentUpon>Registro_Hitoriales.aspx</DependentUpon>
+    <Compile Include="Registros\Registro_Historiales.aspx.cs">
+      <DependentUpon>Registro_Historiales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registros\Registro_Hitoriales.aspx.designer.cs">
-      <DependentUpon>Registro_Hitoriales.aspx</DependentUpon>
+    <Compile Include="Registros\Registro_Historiales.aspx.designer.cs">
+      <DependentUpon>Registro_Historiales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registros\Registro_Vacunas.aspx.cs">
       <DependentUpon>Registro_Vacunas.aspx</DependentUpon>
@@ -202,6 +207,13 @@
     </Compile>
     <Compile Include="Reportes\UsuariosReportViewer.aspx.designer.cs">
       <DependentUpon>UsuariosReportViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reutilizable\StarRegister.aspx.cs">
+      <DependentUpon>StarRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reutilizable\StarRegister.aspx.designer.cs">
+      <DependentUpon>StarRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="VaccineWebControlSystemDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -277,6 +289,7 @@
       <Name>BLL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
