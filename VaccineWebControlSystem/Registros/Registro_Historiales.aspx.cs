@@ -13,10 +13,15 @@ namespace VaccineWebControlSystem.Registros
         Historiales historial = new Historiales();
         protected void Page_Load(object sender, EventArgs e)
         {
-            PacienteLlenarDropDownList();
-            ProvinviaLlenarDropDownList();
-            MunicipioLlenarDropDownList();
-            FechaLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            if (!IsPostBack)
+            {
+                PacienteLlenarDropDownList();
+                ProvinviaLlenarDropDownList();
+                MunicipioLlenarDropDownList();
+                VacunaLlenarDropDownList();
+                FechaLabel.Text = DateTime.Now.ToString("dd/MM/yyyy"); 
+            }
+
         }
 
         private void PacienteLlenarDropDownList()
@@ -49,6 +54,16 @@ namespace VaccineWebControlSystem.Registros
 
         }
 
+        private void VacunaLlenarDropDownList()
+        {
+            Vacunas vacu = new Vacunas();
+            VacunaDropDownList.DataSource = vacu.Listado(" * ", " 1=1 ", " ");
+            VacunaDropDownList.DataTextField = "Descripcion";
+            VacunaDropDownList.DataValueField = "VacunaId";
+            VacunaDropDownList.DataBind();
+
+        }
+
         private void LlenarCampos()
         {
             IdTextBox.Text = historial.HistorialId.ToString();
@@ -59,7 +74,7 @@ namespace VaccineWebControlSystem.Registros
             PacienteDropDownList.SelectedIndex = historial.PacienteId;
             foreach (GridViewRow item in HistorialGridView.Rows)
             {
-                historial.AgregarVacuna(Convert.ToInt32(item.Cells[0].Text), Convert.ToInt32(item.Cells[1].TabIndex),Convert.ToInt32(item.Cells[2].Text),Convert.ToString(item.Cells[3].Text));
+                historial.AgregarVacuna(Convert.ToInt32(item.Cells[0].Text), Convert.ToInt32(item.Cells[1].TabIndex), Convert.ToInt32(item.Cells[2].Text), item.Cells[3].Text);
             }
 
         }
@@ -110,8 +125,10 @@ namespace VaccineWebControlSystem.Registros
             VacunaDropDownList.ClearSelection();
             SiRadioButton.Checked = false;
             NoRadioButton.Checked = false;
-            DosisTextBox.Text = "";
+            DosisTextBox.Text = string.Empty;
             FechaCalendar.SelectedDates.Clear();
+            HistorialGridView.DataSource = string.Empty;
+            HistorialGridView.DataBind();
         }
 
         protected void NuevoButton_Click(object sender, EventArgs e)
@@ -128,7 +145,7 @@ namespace VaccineWebControlSystem.Registros
             historial.PacienteId = PacienteDropDownList.SelectedIndex;
             foreach (GridViewRow item in HistorialGridView.Rows)
             {
-                historial.AgregarVacuna(Convert.ToInt32(item.Cells[0].Text), Convert.ToInt32(item.Cells[1].TabIndex), Convert.ToInt32(item.Cells[2].Text), Convert.ToString(item.Cells[3].Text));
+                historial.AgregarVacuna(Convert.ToInt32(item.Cells[0].Text), Convert.ToInt32(item.Cells[1].TabIndex), Convert.ToInt32(item.Cells[2].Text), item.Cells[3].Text);
             }
         }
 
@@ -148,13 +165,14 @@ namespace VaccineWebControlSystem.Registros
             }
             else
             {
-                if(ConvertToInt(IdTextBox.Text) > 0)
+                if (ConvertToInt(IdTextBox.Text) > 0)
                 {
                     LlenarDatos();
                     if (historial.Editar())
                     {
                         Mensajes("Historial Editado");
-                    }else
+                    }
+                    else
                     {
                         Mensajes("Error al Editar");
                     }
@@ -192,11 +210,11 @@ namespace VaccineWebControlSystem.Registros
             }
 
             historial = (Historiales)Session["Historial"];
-            if (VacunaDropDownList.Text.Length == 0 || NoRadioButton.TabIndex == 0 || SiRadioButton.TabIndex == 0 || DosisTextBox.Text.Length == 0)
-            {
-                Response.Write("<script>alert('Debe llenar los Campos');</script>");
-            }
-            historial.AgregarVacuna(Convert.ToInt32(VacunaDropDownList.Text), Convert.ToInt32(SiRadioButton.Checked), Convert.ToInt32(DosisTextBox.Text),"11/4/2016");
+            //if (VacunaDropDownList.SelectedIndex == 0 || NoRadioButton.TabIndex == 0 || SiRadioButton.TabIndex == 0 || DosisTextBox.Text.Length == 0)
+            //{
+            //    Response.Write("<script>alert('Debe llenar los Campos');</script>");
+            //}
+            historial.AgregarVacuna(Convert.ToInt32(VacunaDropDownList.Text), Convert.ToInt32(SiRadioButton.Checked), Convert.ToInt32(DosisTextBox.Text), CalendarTextBox.Text ); //Convert.ToDateTime(FechaCalendar.SelectedDate.ToString())
             HistorialGridView.DataSource = historial.historialVacuna;
             HistorialGridView.DataBind();
         }

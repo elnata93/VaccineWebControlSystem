@@ -32,11 +32,11 @@ namespace BLL
             historialVacuna = new List<HistorialVacuna>();
         }
 
-        public Historiales(int historialId, string fecha,string CentroSalud, int provinciaId, int municipioId, int pacienteId)
+        public Historiales(int historialId, string fecha,string centroSalud, int provinciaId, int municipioId, int pacienteId)
         {
             this.HistorialId = historialId;
             this.Fecha = fecha;
-            this.CentroSalud = CentroSalud;
+            this.CentroSalud = centroSalud;
             this.ProvinciaId = provinciaId;
             this.MunicipioId = municipioId;
             this.PacienteId = pacienteId;
@@ -53,13 +53,13 @@ namespace BLL
             object identity;
             try
             {
-                identity = conexion.ObtenerValor(String.Format("insert into Histortiales(Fecha,CentroSalud,ProvinciaId,MunicipioId,PacienteId) values('{0}','{1}',{2},{3},{4}') select @@Identity ", this.Fecha,this.CentroSalud, this.MunicipioId, this.ProvinciaId, this.PacienteId));
+                identity = conexion.ObtenerValor(String.Format("insert into Historiales(Fecha,CentroSalud,ProvinciaId,MunicipioId,PacienteId) values('{0}','{1}',{2},{3},{4}) select @@Identity ", this.Fecha,this.CentroSalud, this.MunicipioId, this.ProvinciaId, this.PacienteId));
 
                 int.TryParse(identity.ToString(), out retorno);
                 this.HistorialId = retorno;
                 foreach (HistorialVacuna item in historialVacuna)
                 {
-                    conexion.Ejecutar(String.Format("insert into HistorialesVacunas(HistorialId,EsUnica,VacunaId,Dosis,Fecha) values({0},{1},{2},{3})", retorno,item.EsUnica,item.VacunaId,item.EsUnica,item.Fecha));
+                    conexion.Ejecutar(String.Format("insert into HistorialDetalle(HistorialId,EsUnica,VacunaId,Dosis,Fecha) values({0},{1},{2},{3},'{4}')", retorno,item.EsUnica,item.VacunaId,item.EsUnica,item.Fecha));
                 }
             }
             catch (Exception ex)
@@ -124,7 +124,7 @@ namespace BLL
                     data = conexion.ObtenerDatos(String.Format("Select * from HistorialDetalle where HistorialId= " + IdBuscado));
 					foreach (DataRow item in data.Rows)
 					{
-						this.AgregarVacuna((int)data.Rows[0]["EsUnica"],(int)data.Rows[0]["VacunaId"], (int)data.Rows[0]["Dosis"],data.Rows[0]["Fecha"].ToString());
+						this.AgregarVacuna((int)data.Rows[0]["EsUnica"],(int)data.Rows[0]["VacunaId"], (int)data.Rows[0]["Dosis"], data.Rows[0]["Fecha"].ToString()); 
 					}
 				}
 			}

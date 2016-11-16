@@ -67,9 +67,9 @@
                             <asp:ListItem>Empleado</asp:ListItem>
                         </asp:DropDownList>
                         <asp:Label ID="Label11" runat="server" Text="Contraseña"></asp:Label>
-                        <asp:TextBox ID="ContrasenaTextBox" runat="server" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>
+                        <asp:TextBox ID="ContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>
                         <asp:Label ID="Label12" runat="server" Text="Confimar Contraseña"></asp:Label>
-                        <asp:TextBox ID="ConfContrasenaTextBox" runat="server" CssClass="form-control" placeholder="Confimar Contraseña"></asp:TextBox>
+                        <asp:TextBox ID="ConfContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confimar Contraseña"></asp:TextBox>
 
                     </div>
 

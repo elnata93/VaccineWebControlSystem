@@ -86,7 +86,7 @@ namespace BLL
             string OrdenFinal = "";
             if (!Orden.Equals(""))
                 OrdenFinal = "Oder by" + Orden;
-            return conexion.ObtenerDatos("select" + Campo + "fron Vacunas where" + Condicion + Orden);
+            return conexion.ObtenerDatos("select " + Campo + "from Vacunas where " + Condicion + Orden);
         }
     }
 }

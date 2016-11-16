@@ -26,5 +26,10 @@ namespace BLL
         //{
         //    Console.Write("<script>alert('" + mensaje + "');</script>");
         //}
+
+        //public static void FechaConvert(string fecha)
+        //{
+        //    fecha = DateTime.Now.ToString("dd/MM/yyy");                                                                                                                              ch;
+        //}
     }
 }

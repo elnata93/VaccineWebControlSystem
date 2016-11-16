@@ -123,47 +123,37 @@ namespace VaccineWebControlSystem.Registros
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
             Usuarios user = new Usuarios();
-            if (NombreTextBox.Text.Length == 0 || ApellidoTextBox.Text.Length == 0 || DireccionTextBox.Text.Length == 0 ||
-                TelefonoTextBox.Text.Length == 0 || EmailTextBox.Text.Length == 0 || CiudadDropDownList.Text.Length == 0 ||
-                NombreUsuarioTextBox.Text.Length == 0 || TipoUsuarioDropDownList.Text.Length == 0 ||
-                ContrasenaTextBox.Text.Length == 0 || ConfContrasenaTextBox.Text.Length == 0)
+            if (string.IsNullOrWhiteSpace(IdTextBox.Text))
             {
-                
-                Utility.ShowToastr(this, "Hay campos sin completar", "Error", "Success");
-
-            }
-            else
-
-            if (Id(IdTextBox.Text) == 0)
-            {
-
-                LlenarDatos(user);
+               LlenarDatos(user);
                 if (user.Insertar())
                 {
-                    //Mensajes("Usuario Guardado");
+                    Limpiar();
+                    Utility.ShowToastr(this, "Extio!", "Mensaje", "success");
                 }
                 else
                 {
-                    //Mensajes("Error al Guardar");
+                   Utility.ShowToastr(this, "error", "Mensaje", "error");
                 }
-                //Limpiar();
+               
             }
             else
-            if (Id(IdTextBox.Text) > 0)
+            if (IdTextBox.Text.Length > 0)
             {
                 if (user.Buscar(Id(IdTextBox.Text)))
                 {
                     LlenarDatos(user);
                     if (user.Editar())
                     {
-                        //Mensajes("Usuario Guardado");
+                        Limpiar();
+                        Utility.ShowToastr(this, "Extio!", "Mensaje", "success");
                     }
                     else
                     {
-                        //Mensajes("Error al Guardar");
+                        Utility.ShowToastr(this, "error", "Mensaje", "error");
                     }
                 }
-                //Limpiar();
+                
             }
         }
 

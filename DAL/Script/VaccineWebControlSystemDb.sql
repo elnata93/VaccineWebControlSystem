@@ -45,7 +45,7 @@ Cedula varchar(20)
 );
 go
 create table Historiales(HistorialId int primary key identity(1,1),
-Fecha date,
+Fecha varchar(18),
 CentroSalud varchar(50),
 ProvinciaId int,
 MunicipioId int,
@@ -57,5 +57,5 @@ HistorialId int,
 EsUnica int,
 VacunaId int references Vacunas(VacunaId),
 Dosis int,
-Fecha data
+Fecha varchar(18),
 );

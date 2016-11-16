@@ -31,7 +31,8 @@ namespace VaccineWebControlSystem.Registros
         {
             if (IdTextBox.Text == "")
             {
-                Utility.ShowToastr(this,"Introdusca el ID","Mensaje","Exito");
+                //Utility.ShowToastr(this,"Introdusca el ID","Mensaje","Exito");
+                Response.Write("<script>alert('Introdusca el ID')</script>");
             }
             else
             if (Id(IdTextBox.Text) != 0)
