@@ -67,8 +67,13 @@
       <DependentUpon>VaccineWebControlSystem.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Consultas\Consulta_Usuarios.aspx" />
-    <Content Include="Consultas\Consulta_Historiales.aspx" />
+    <Content Include="Consultas\Consultar_Ciudades.aspx" />
+    <Content Include="Consultas\Consultar_Municipios.aspx" />
+    <Content Include="Consultas\Consultar_Pacientes.aspx" />
+    <Content Include="Consultas\Consultar_Provincias.aspx" />
+    <Content Include="Consultas\Consultar_Vacunas.aspx" />
+    <Content Include="Consultas\Consultar_Usuarios.aspx" />
+    <Content Include="Consultas\Consultar_Historiales.aspx" />
     <Content Include="css\bootstrap-rtl.css" />
     <Content Include="css\bootstrap-rtl.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -82,6 +87,7 @@
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.10.2.js" />
@@ -107,23 +113,59 @@
     <Content Include="Registros\Registro_Vacunas.aspx" />
     <Content Include="Reportes\HistorialesReportViewer.aspx" />
     <Content Include="Reportes\UsuariosReportViewer.aspx" />
+    <Content Include="Reutilizable\PacientesWebUserControl.ascx" />
     <Content Include="Reutilizable\StarRegister.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consultas\Consulta_Usuarios.aspx.cs">
-      <DependentUpon>Consulta_Usuarios.aspx</DependentUpon>
+    <Compile Include="Consultas\Consultar_Ciudades.aspx.cs">
+      <DependentUpon>Consultar_Ciudades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Consultas\Consulta_Usuarios.aspx.designer.cs">
-      <DependentUpon>Consulta_Usuarios.aspx</DependentUpon>
+    <Compile Include="Consultas\Consultar_Ciudades.aspx.designer.cs">
+      <DependentUpon>Consultar_Ciudades.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Consultas\Consulta_Historiales.aspx.cs">
-      <DependentUpon>Consulta_Historiales.aspx</DependentUpon>
+    <Compile Include="Consultas\Consultar_Municipios.aspx.cs">
+      <DependentUpon>Consultar_Municipios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Consultas\Consulta_Historiales.aspx.designer.cs">
-      <DependentUpon>Consulta_Historiales.aspx</DependentUpon>
+    <Compile Include="Consultas\Consultar_Municipios.aspx.designer.cs">
+      <DependentUpon>Consultar_Municipios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Pacientes.aspx.cs">
+      <DependentUpon>Consultar_Pacientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Pacientes.aspx.designer.cs">
+      <DependentUpon>Consultar_Pacientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Provincias.aspx.cs">
+      <DependentUpon>Consultar_Provincias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Provincias.aspx.designer.cs">
+      <DependentUpon>Consultar_Provincias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Vacunas.aspx.cs">
+      <DependentUpon>Consultar_Vacunas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Vacunas.aspx.designer.cs">
+      <DependentUpon>Consultar_Vacunas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Usuarios.aspx.cs">
+      <DependentUpon>Consultar_Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Usuarios.aspx.designer.cs">
+      <DependentUpon>Consultar_Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Historiales.aspx.cs">
+      <DependentUpon>Consultar_Historiales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\Consultar_Historiales.aspx.designer.cs">
+      <DependentUpon>Consultar_Historiales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -131,6 +173,9 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
@@ -207,6 +252,13 @@
     </Compile>
     <Compile Include="Reportes\UsuariosReportViewer.aspx.designer.cs">
       <DependentUpon>UsuariosReportViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reutilizable\PacientesWebUserControl.ascx.cs">
+      <DependentUpon>PacientesWebUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reutilizable\PacientesWebUserControl.ascx.designer.cs">
+      <DependentUpon>PacientesWebUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Reutilizable\StarRegister.aspx.cs">
       <DependentUpon>StarRegister.aspx</DependentUpon>

@@ -54,7 +54,6 @@ PacienteId int,
 go
 create table HistorialDetalle(Id int primary key identity(1,1),
 HistorialId int,
-EsUnica int,
 VacunaId int references Vacunas(VacunaId),
 Dosis int,
 Fecha varchar(18),

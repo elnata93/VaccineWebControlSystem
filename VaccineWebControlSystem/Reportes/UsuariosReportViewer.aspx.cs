@@ -31,6 +31,17 @@ namespace VaccineWebControlSystem.Reportes
                 UsuariosreportViewer.LocalReport.DataSources.Add(source);
 
                 UsuariosreportViewer.LocalReport.Refresh();
+
+                //this.reportViewer1.Reset();
+                //this.reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+
+                //this.reportViewer1.LocalReport.ReportPath = this.reporte;
+
+                //ReportDataSource source = new ReportDataSource(this.data.TableName, this.data);
+
+                //this.reportViewer1.LocalReport.DataSources.Add(source);
+
+                //this.reportViewer1.RefreshReport();
             }
         }
 

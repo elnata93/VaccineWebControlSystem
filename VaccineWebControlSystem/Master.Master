@@ -37,7 +37,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-       
+
         <div id="wrapper">
 
             <!-- Navigation -->
@@ -117,25 +117,25 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Consultas <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo1" class="collapse">
                                 <li>
-                                    <a href="/Consultas/Consulta_Ciudades.aspx">Ciudades</a>
+                                    <a href="/Consultas/Consultar_Ciudades.aspx">Ciudades</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consulta_Provincias.aspx">Provincias</a>
+                                    <a href="/Consultas/Consultar_Provincias.aspx">Provincias</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consulta_Municipios.aspx">Municipios</a>
+                                    <a href="/Consultas/Consultar_Municipios.aspx">Municipios</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consulta_Usuarios.aspx">Usuarios</a>
+                                    <a href="/Consultas/Consultar_Usuarios.aspx">Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consulta_Vacunas.aspx">Vacunas</a>
+                                    <a href="/Consultas/Consultar_Vacunas.aspx">Vacunas</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consulta_Pacientes.aspx">Pacientes</a>
+                                    <a href="/Consultas/Consultar_Pacientes.aspx">Pacientes</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consulta_Historiales.aspx">Historiales</a>
+                                    <a href="/Consultas/Consultar_Historiales.aspx">Historiales</a>
                                 </li>
                             </ul>
                         </li>
@@ -146,23 +146,29 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
 
-            <!-- Map Section -->
-            <div id="map"></div>
-
-            <!-- Footer -->
-            <div class="container">
-                <div class="row">
-                    <footer>
-                        <div class="container text-center">
-                            <p>Copyright &copy; Your Website 2016</p>
-                        </div>
-                    </footer>
-                </div>
-            </div>
+            
         </div>
         <!-- /#wrapper -->
 
     </form>
+
+    <!-- Map Section -->
+            <div id="map"></div>
+
+            <!-- Footer -->
+            <fieldset>
+                <div class="container">
+
+                    <div class="row">
+                        <div class="lib-footer">
+                            <div class="container text-center">
+                                <p>Copyright &copy; Your Website 2016</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
     <!-- jQuery -->
     <script src="/js/jquery.js"></script>
 
