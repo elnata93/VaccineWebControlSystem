@@ -9,7 +9,9 @@
             <div class="panel-body">
                 <div class="form-horizontal col-md-12" role="form">
                     <div class="form-group ">
-                        <div class="col-md-11 ">
+                        <div class="col-md-10 ">
+                        </div>
+                        <div class="col-md-1 ">
                             <asp:Label ID="Label10" runat="server" Text="Fecha:"></asp:Label>
                         </div>
                         <div class="col-md-1">
@@ -52,17 +54,26 @@
                     <asp:Label ID="Label8" runat="server" Text="Dosis:"></asp:Label>
 
                     <asp:TextBox ID="DosisTextBox" runat="server" CssClass="form-control " placeholder="Dosis"></asp:TextBox>
-
-                    <div class="form-group col-md-11">
-                        <asp:Label ID="Label9" runat="server" Text="Fecha:"></asp:Label>
-                        <asp:TextBox ID="FechaVacunaTextBox" runat="server" CssClass="form-control" Type="date" cssTextMode="Date"></asp:TextBox>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <asp:Label ID="Label9" runat="server" Text="Fecha:"></asp:Label>
+                            <asp:TextBox ID="FechaVacunaTextBox" runat="server" CssClass="form-control" Type="date" cssTextMode="Date"></asp:TextBox>
+                        </div>
+                        <div class="col-md-8">
+                        </div>
+                        <div class="col-md-1">
+                            <br />
+                            <asp:Button ID="AgregarButton" CssClass="btn btn-warning " runat="server" Text="Agregar" OnClick="AgregarButton_Click" />
+                        </div>
                     </div>
-
-                    <br />
-                    <asp:Button ID="AgregarButton" class="col-md-1" CssClass="btn btn-warning " runat="server" Text="Agregar" OnClick="AgregarButton_Click" />
                 </div>
 
-                <asp:GridView ID="HistorialGridView" runat="server" Width="100%">
+                <asp:GridView ID="HistorialGridView" runat="server" Width="100%" Height="100%" AutoGenerateColumns="False">
+                    <Columns>
+                        <asp:BoundField DataField="VacunaId" HeaderText="VacunaId" ReadOnly="True" SortExpression="VacunaId" />
+                        <asp:BoundField DataField="Dosis" HeaderText="Dosis" ReadOnly="True" SortExpression="Dosis" />
+                        <asp:BoundField DataField="Fecha" HeaderText="Fecha" ReadOnly="True" SortExpression="Fecha" />
+                    </Columns>
                 </asp:GridView>
 
                 <div class="form-horizontal col-lg-12 " role="form">

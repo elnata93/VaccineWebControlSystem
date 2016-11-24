@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Data;
 using System.Web.UI.WebControls;
 using BLL;
 
@@ -10,7 +11,7 @@ namespace VaccineWebControlSystem.Registros
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        Historiales historial = new Historiales();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -19,7 +20,34 @@ namespace VaccineWebControlSystem.Registros
                 ProvinviaLlenarDropDownList();
                 MunicipioLlenarDropDownList();
                 VacunaLlenarDropDownList();
-                FechaLabel.Text = DateTime.Now.ToString("dd/MM/yyyy"); 
+                FechaLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                //int Id;
+                //if (Request.QueryString["Id"] != null)
+                //{
+                //    Id = Utility.ConvertirToEntero(Request.QueryString["Id"].ToString());
+
+                //    if (Id > 0)
+                //    {
+                //        Historiales historial = new Historiales();
+                //        if (!historial.Buscar(Id))
+                //        {
+                //            Utility.ShowToastr(this, "Registro no encontrado", "Error", "Danger");
+
+                //        }
+                //        else
+                //        {
+                //            IdTextBox.Text = Id.ToString();
+                //            LlenarCampos(historial);
+                //        }
+
+                //    }
+                //}
+                
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[3] { new DataColumn("VacunaId"), new DataColumn("Dosis"), new DataColumn("Fecha") });
+                Session["historial"] = dt;
+
+                
             }
 
         }
@@ -65,7 +93,7 @@ namespace VaccineWebControlSystem.Registros
 
         }
 
-        private void LlenarCampos()
+        private void LlenarCampos(Historiales historial)
         {
             IdTextBox.Text = historial.HistorialId.ToString();
             FechaLabel.Text = historial.Fecha;
@@ -75,30 +103,24 @@ namespace VaccineWebControlSystem.Registros
             PacienteDropDownList.SelectedIndex = historial.PacienteId;
             foreach (GridViewRow item in HistorialGridView.Rows)
             {
-                historial.AgregarVacuna( Convert.ToInt32(item.Cells[1].TabIndex), Convert.ToInt32(item.Cells[2].Text), item.Cells[3].Text);
+                historial.AgregarVacuna(Convert.ToInt32(item.Cells[0].TabIndex), Convert.ToInt32(item.Cells[1].Text), item.Cells[2].Text);
             }
 
         }
-
-        private int ConvertToInt(string numero)
-        {
-            int id = 0;
-            int.TryParse(numero, out id);
-            return id;
-        }
-
+        
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
+            Historiales historial = new Historiales();
             if (IdTextBox.Text == "")
             {
                 Utility.ShowToastr(this, "Introdusca el ID", "Mensaje", "info");
             }
             else
-            if (ConvertToInt(IdTextBox.Text) != 0)
+            if (Utility.ConvertirToEntero(IdTextBox.Text) != 0)
             {
-                if (historial.Buscar(ConvertToInt(IdTextBox.Text)))
+                if (historial.Buscar(Utility.ConvertirToEntero(IdTextBox.Text)))
                 {
-                    LlenarCampos();
+                    LlenarCampos(historial);
                 }
                 else
                 {
@@ -110,12 +132,7 @@ namespace VaccineWebControlSystem.Registros
                 Utility.ShowToastr(this, "Id no Encontrado!", "Mensaje", "info");
             }
         }
-
-        private void Mensajes(string mensaje)
-        {
-            Response.Write("<script>alert('" + mensaje + "');</script>");
-        }
-
+        
         private void Limpiar()
         {
             FechaLabel.Text = FechaLabel.Text;
@@ -136,7 +153,7 @@ namespace VaccineWebControlSystem.Registros
             Limpiar();
         }
 
-        private void LlenarDatos()
+        private void LlenarDatos(Historiales historial)
         {
             historial.Fecha = FechaLabel.Text;
             historial.CentroSalud = CentroSaludTextBox.Text;
@@ -145,15 +162,16 @@ namespace VaccineWebControlSystem.Registros
             historial.PacienteId = PacienteDropDownList.SelectedIndex;
             foreach (GridViewRow item in HistorialGridView.Rows)
             {
-                historial.AgregarVacuna(Convert.ToInt32(item.Cells[1].TabIndex), Convert.ToInt32(item.Cells[2].Text), item.Cells[3].Text);
+                historial.AgregarVacuna(Convert.ToInt32(item.Cells[0].TabIndex), Convert.ToInt32(item.Cells[1].Text), item.Cells[2].Text);
             }
         }
 
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
+            Historiales historial = new Historiales();
             if (IdTextBox.Text.Length == 0)
             {
-                LlenarDatos();
+                LlenarDatos(historial);
                 if (historial.Insertar())
                 {
                     Utility.ShowToastr(this, "Extio!", "Mensaje", "success");
@@ -166,9 +184,9 @@ namespace VaccineWebControlSystem.Registros
             }
             else
             {
-                if (ConvertToInt(IdTextBox.Text) > 0)
+                if (Utility.ConvertirToEntero(IdTextBox.Text) > 0)
                 {
-                    LlenarDatos();
+                    LlenarDatos(historial);
                     if (historial.Editar())
                     {
                         Utility.ShowToastr(this, "Extio!", "Mensaje", "success");
@@ -184,16 +202,17 @@ namespace VaccineWebControlSystem.Registros
 
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
-            if (ConvertToInt(IdTextBox.Text) == 0)
+            Historiales historial = new Historiales();
+            if (Utility.ConvertirToEntero(IdTextBox.Text) == 0)
             {
                 Utility.ShowToastr(this, "Debe Ingresae el ID!", "Mensaje", "info");
             }
             else
             {
-                if (historial.Buscar(ConvertToInt(IdTextBox.Text)))
+                if (historial.Buscar(Utility.ConvertirToEntero(IdTextBox.Text)))
                 {
                     historial.Eliminar();
-                    
+
                     Utility.ShowToastr(this, "Eliminado!", "Mensaje", "success");
                 }
                 else
@@ -205,22 +224,27 @@ namespace VaccineWebControlSystem.Registros
 
         protected void AgregarButton_Click(object sender, EventArgs e)
         {
-            Historiales historial;
+            
             //if (VacunaDropDownList.SelectedIndex == 0 || DosisTextBox.Text.Length == 0 || FechaVacunaTextBox.Text.Length == 0)
             //{
             //    Utility.ShowToastr(this, "LLene los campos requeridos!", "Mensaje", "info");
             //}
 
-            if (Session["Historial"] == null)
+            
+            if (Session["historial"] == null)
             {
-                Session["Historial"] = new Historiales();
+                Session["historial"] = new Historiales();
             }
 
-            historial = (Historiales)Session["Historial"];
-            
-            historial.AgregarVacuna(Convert.ToInt32(VacunaDropDownList.Text), Convert.ToInt32(DosisTextBox.Text), FechaVacunaTextBox.Text); 
-            HistorialGridView.DataSource = historial.historialVacuna;
+            DataTable dt =  (DataTable)Session["historial"];
+
+            dt.Rows.Add(Utility.ConvertirToEntero(VacunaDropDownList.Text) ,Utility.ConvertirToEntero( DosisTextBox.Text), FechaVacunaTextBox.Text);
+
+            Session["historial"] = dt;
+
+            HistorialGridView.DataSource = dt;
             HistorialGridView.DataBind();
+            
         }
     }
 }

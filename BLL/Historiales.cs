@@ -17,7 +17,7 @@ namespace BLL
         public int ProvinciaId { get; set; }
         public int MunicipioId { get; set; }
         public int PacienteId { get; set; }
-        public List<HistorialesVacunas> historialVacuna { get; set; }
+        public List<HistorialDetalle> historialVacuna { get; set; }
 
 
         public Historiales()
@@ -29,7 +29,7 @@ namespace BLL
             this.ProvinciaId = 0;
             this.MunicipioId = 0;
             this.PacienteId = 0;
-            historialVacuna = new List<HistorialesVacunas>();
+            historialVacuna = new List<HistorialDetalle>();
         }
 
         public Historiales(int historialId, string fecha,string centroSalud, int provinciaId, int municipioId, int pacienteId)
@@ -44,7 +44,7 @@ namespace BLL
 
         public void AgregarVacuna( int vacunaId,  int dosis,string fecha)
         {
-            historialVacuna.Add(new HistorialesVacunas( vacunaId,  dosis, fecha));
+            historialVacuna.Add(new HistorialDetalle( vacunaId,  dosis, fecha));
         }
 
         public override bool Insertar()
@@ -53,11 +53,12 @@ namespace BLL
             object identity;
             try
             {
-                identity = conexion.ObtenerValor(String.Format("insert into Historiales(Fecha,CentroSalud,ProvinciaId,MunicipioId,PacienteId) values('{0}','{1}',{2},{3},{4}) select @@Identity ", this.Fecha,this.CentroSalud, this.MunicipioId, this.ProvinciaId, this.PacienteId));
+                identity = conexion.ObtenerValor(String.Format("insert into Historiales(Fecha,CentroSalud,ProvinciaId,MunicipioId,PacienteId) values('{0}','{1}',{2},{3},{4}) select @@Identity ", 
+                    this.Fecha,this.CentroSalud, this.MunicipioId, this.ProvinciaId, this.PacienteId));
 
                 int.TryParse(identity.ToString(), out retorno);
                 this.HistorialId = retorno;
-                foreach (HistorialesVacunas item in historialVacuna)
+                foreach (HistorialDetalle item in historialVacuna)
                 {
                     conexion.Ejecutar(String.Format("insert into HistorialDetalle(HistorialId,VacunaId,Dosis,Fecha) values({0},{1},{2},'{3}')", retorno,item.VacunaId,item.Dosis,item.Fecha));
                 }
@@ -74,13 +75,14 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("update Historiales set Fecha='{0}',CentroSalud='{1}',ProvinciaId={2},MunicipioId={3},PacienteId={4} where HistorialId={5}", this.Fecha, this.CentroSalud, this.MunicipioId, this.ProvinciaId, this.PacienteId, this.HistorialId));
+                retorno = conexion.Ejecutar(String.Format("update Historiales set Fecha='{0}',CentroSalud='{1}',ProvinciaId={2},MunicipioId={3},PacienteId={4} where HistorialId={5}", 
+                    this.Fecha, this.CentroSalud, this.MunicipioId, this.ProvinciaId, this.PacienteId, this.HistorialId));
                 if (retorno)
                 {
-                    conexion.Ejecutar(String.Format("delete from PacientesVacunas where HistorialId={0}", this.HistorialId));
-                    foreach (HistorialesVacunas item in historialVacuna)
+                    conexion.Ejecutar(String.Format("delete from HistorialDetalle where HistorialId={0}", this.HistorialId));
+                    foreach (HistorialDetalle item in historialVacuna)
                     {
-                        conexion.Ejecutar(String.Format("insert into PacientesVacunas(HistorialId,VacunaId,Dosis,Fecha) values({0},{1},{2},'{3}')", this.HistorialId, item.VacunaId, item.Dosis,item.Fecha));
+                        conexion.Ejecutar(String.Format("insert into HistorialDetalle(HistorialId,VacunaId,Dosis,Fecha) values({0},{1},{2},'{3}')", this.HistorialId, item.VacunaId, item.Dosis,item.Fecha));
                     }
                 }
             }
@@ -97,7 +99,7 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("delete from HistorialesVacunas where HistorialId={0}; "+"delete from Vacunas where HistorialId={0} ",this.HistorialId));
+                retorno = conexion.Ejecutar(String.Format("delete from HistorialDetalle where HistorialId={0}; " + "delete from Vacunas where HistorialId={0} ",this.HistorialId));
             }
             catch (Exception ex)
             {
@@ -151,5 +153,6 @@ namespace BLL
             return conexion.ObtenerDatos("Select h.Fecha,h.CentroSalud,h.ProvinciaId,h.MunicipioId,h.PacienteId,hv.VacunaId,hv.Dosis,hv.Fecha from Historiales h inner join HiatorialesVacunas hv on h.HistorialId=hv.HistorialId where " + Condicion);
 
         }
+        
     }
 }

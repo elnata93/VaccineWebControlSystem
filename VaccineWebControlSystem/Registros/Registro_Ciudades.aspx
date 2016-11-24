@@ -27,13 +27,14 @@
                     <%--<link href="/Reutilizable/StarRegister.aspx" rel="stylesheet" />
                     --%>
                     <div class="form-horizontal col-lg-12 " role="form">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorTextBoxDescripcion" runat="server" ControlToValidate="DescripcionTextBox" ErrorMessage="Campo requerido" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <br />
                         <br />
                         <div class="form-group ">
                             <div class="container text-center " >
                                 <asp:Button ID="NuevoButton" Cssclass="btn btn-primary" runat="server" OnClick="NuevoButton_Click" Text="Nuevo" />
-                                <asp:Button ID="GuardarButton" Cssclass="btn btn-success" runat="server" OnClick="GuardarButton_Click" Text="Guardar" />
+                                <asp:Button ID="GuardarButton" Cssclass="btn btn-success" runat="server" OnClick="GuardarButton_Click" Text="Guardar" ValidationGroup="A" />
                                 <asp:Button ID="EliminarButton" Cssclass="btn btn-danger" runat="server" Text="Eliminar" OnClick="EliminarButton_Click" />
                             </div> 
                         </div>

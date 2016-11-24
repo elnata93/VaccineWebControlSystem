@@ -57,6 +57,8 @@
                         <asp:TextBox ID="TelefonoTextBox" runat="server" CssClass="form-control" placeholder="Telefono"></asp:TextBox>
                         <asp:Label ID="Label7" runat="server" Text="Email"></asp:Label>
                         <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="EmailTextBox" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="A"></asp:RegularExpressionValidator>
+                        <br />
                         <asp:Label ID="Label8" runat="server" Text="Cedula"></asp:Label>
                         <asp:DropDownList ID="CiudadDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
                         <asp:Label ID="Label9" runat="server" Text="Nombre de Usuario"></asp:Label>
@@ -67,20 +69,23 @@
                             <asp:ListItem>Empleado</asp:ListItem>
                         </asp:DropDownList>
                         <asp:Label ID="Label11" runat="server" Text="Contraseña"></asp:Label>
-                        <asp:TextBox ID="ContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>
-                        <asp:Label ID="Label12" runat="server" Text="Confimar Contraseña"></asp:Label>
-                        <asp:TextBox ID="ConfContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confimar Contraseña"></asp:TextBox>
+                        <asp:TextBox ID="ContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>                 
+                              <asp:RequiredFieldValidator ID="RequiredFieldValidatorContrasena" runat="server" ErrorMessage="Campo requerido" ValidationGroup="A" ControlToValidate="ContrasenaTextBox" ForeColor="Red"></asp:RequiredFieldValidator>
 
+                        <asp:Label ID="Label12" runat="server" Text="Confimar Contraseña" ForeColor="Red"></asp:Label>
+                        <asp:TextBox ID="ConfContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confimar Contraseña"></asp:TextBox>
                     </div>
 
                     <div class="form-horizontal col-lg-12 " role="form">
+                        <asp:CompareValidator ID="CompareValidatorContrasena" runat="server" ControlToCompare="ContrasenaTextBox" ControlToValidate="ConfContrasenaTextBox" ErrorMessage="No coinciden" ForeColor="Red" ValidationGroup="A"></asp:CompareValidator>
                         <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorConfirmarContrasena" runat="server" ControlToValidate="ConfContrasenaTextBox" ErrorMessage="Campo requerido" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <br />
                         <div class="form-group ">
                             <div class="container text-center ">
                                 <asp:Button ID="NuevoButton" CssClass="btn btn-primary" runat="server" OnClick="NuevoButton_Click" Text="Nuevo" />
-                                <asp:Button ID="GuardarButton" CssClass="btn btn-success" runat="server" OnClick="GuardarButton_Click" Text="Guardar" />
+                                <asp:Button ID="GuardarButton" CssClass="btn btn-success" runat="server" OnClick="GuardarButton_Click" Text="Guardar" ValidationGroup="A" />
                                 <asp:Button ID="EliminarButton" CssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="EliminarButton_Click" />
                             </div>
                         </div>
