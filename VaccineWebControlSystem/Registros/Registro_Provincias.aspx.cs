@@ -14,12 +14,9 @@ namespace VaccineWebControlSystem.Registros
         {
 
         }
-        private void Mensajes(string mensaje)
-        {
-            Response.Write("<script>alert('" + mensaje + "');</script>");
-        }
 
-        private void LlenarCampos(Provincias provin )
+
+        private void LlenarCampos(Provincias provin)
         {
             DescripcionTextBox.Text = provin.Descripcion;
 
@@ -29,23 +26,23 @@ namespace VaccineWebControlSystem.Registros
             Provincias provin = new Provincias();
             if (IdTextBox.Text == "")
             {
-                Mensajes("Introdusca el ID");
+                Utility.ShowToastr(this, "Introdusca el ID", "Mendsaje", "info");
             }
             else
-            if (Utility.ConvertirToEntero(IdTextBox.Text) != 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) != 0)
             {
-                if (provin.Buscar(Utility.ConvertirToEntero(IdTextBox.Text)))
+                if (provin.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarCampos(provin);
                 }
                 else
                 {
-                    Mensajes("Id no exite");
+                    Utility.ShowToastr(this, "Id no Existe", "Mendsaje", "info");
                 }
             }
             else
             {
-                Mensajes("Id no encontrado");
+                Utility.ShowToastr(this, "Id no Encotrado", "Mendsaje", "info");
             }
 
         }
@@ -62,46 +59,52 @@ namespace VaccineWebControlSystem.Registros
             Limpiar();
         }
 
-        private void LlenarDatos(Provincias provin )
+        private void LlenarDatos(Provincias provin)
         {
             provin.Descripcion = DescripcionTextBox.Text;
         }
+
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
             Provincias provin = new Provincias();
             if (DescripcionTextBox.Text.Length == 0)
             {
-                Response.Write("<script>alert('Hay campos sin completar')<script>");
+                Utility.ShowToastr(this, "Hay campos sin completar", "Mensaje", "info");
             }
             else
 
-            if (Utility.ConvertirToEntero(IdTextBox.Text) == 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) == 0)
             {
 
                 LlenarDatos(provin);
                 if (provin.Insertar())
                 {
-                    Mensajes("Provincia Guardado");
+
+                    Utility.ShowToastr(this, "Provincia Guardado", "Mensaje", "success");
+                    Limpiar();
                 }
                 else
                 {
-                    Mensajes("Error al Guardar");
+                    Utility.ShowToastr(this, "Error al Guardado", "Mensaje", "error");
+                    Limpiar();
                 }
                 Limpiar();
             }
             else
-            if (Utility.ConvertirToEntero(IdTextBox.Text) > 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) > 0)
             {
-                if (provin.Buscar(Utility.ConvertirToEntero(IdTextBox.Text)))
+                if (provin.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarDatos(provin);
                     if (provin.Editar())
                     {
-                        Mensajes("Provincia Guardado");
+                        Utility.ShowToastr(this, "Provincia Editada", "Mensaje", "success");
+                        Limpiar();
                     }
                     else
                     {
-                        Mensajes("Error al Guardar");
+                        Utility.ShowToastr(this, "Error al Editar", "Mensaje", "error");
+                        Limpiar();
                     }
                 }
                 Limpiar();
@@ -113,20 +116,29 @@ namespace VaccineWebControlSystem.Registros
             Provincias provin = new Provincias();
             if (IdTextBox.Text.Length == 0)
             {
-                Mensajes("Debe Ingresar el ID");
+                Utility.ShowToastr(this, "Debe Ingresar el ID", "Mensaje", "info");
+                Limpiar();
             }
             else
-                if (provin.Buscar(Utility.ConvertirToEntero(IdTextBox.Text)))
+            {
+                if (provin.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
-                    provin.Eliminar();
-                    Mensajes("Provincia Eliminado");
-                    Limpiar();
+                    if (provin.Eliminar())
+                    {
+                        Limpiar();
+                        Utility.ShowToastr(this, "Provincia Eliminado", "Mensaje", "success");
+                    }
+                    else
+                    {
+                        Utility.ShowToastr(this, "Error no se Elimino", "Mensaje", "error");
+                    }
                 }
                 else
                 {
-                    Mensajes("Error Provincia no se Elimino");
+                    Utility.ShowToastr(this, "Error ", "Mensaje", "error");
                     Limpiar();
                 }
+            }
         }
     }
 }

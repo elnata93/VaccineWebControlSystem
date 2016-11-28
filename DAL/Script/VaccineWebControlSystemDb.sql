@@ -20,6 +20,7 @@ Fecha date,
 Imagen varchar(300),
 Nombres varchar(30),
 Apellidos varchar(30),
+Sexo int,
 Direccion varchar(100),
 Cedula varchar(20),
 Telefono Varchar(15),
@@ -54,7 +55,7 @@ PacienteId int,
 go
 create table HistorialDetalle(Id int primary key identity(1,1),
 HistorialId int,
-VacunaId int references Vacunas(VacunaId),
+VacunaId int,
 Dosis int,
-Fecha varchar(18),
+Fecha varchar(18)
 );

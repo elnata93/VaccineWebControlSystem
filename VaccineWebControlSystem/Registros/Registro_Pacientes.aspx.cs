@@ -31,7 +31,7 @@ namespace VaccineWebControlSystem.Registros
             }
             else
             {
-                FemeninoRadioButton.Checked = false;
+                FemeninoRadioButton.Checked = true;
             }
             DireccionTextBox.Text = paciente.Direccion;
             TelefonoTextBox.Text = paciente.Telefono;
@@ -56,11 +56,11 @@ namespace VaccineWebControlSystem.Registros
 
         private void LlenarDatos(Pacientes paciente)
         {
-            paciente.PacienteId = Utility.ConvertirToEntero( IdTextBox.Text);
+            paciente.PacienteId = Utility.ConvertirToInt(IdTextBox.Text);
             paciente.Nombres = NombreTextBox.Text;
             paciente.Apellidos = ApellidoTextBox.Text;
             paciente.Edad = Convert.ToInt32(EdadTextBox.Text);
-            if (MasculinoRadioButton.Checked == true)
+            if (MasculinoRadioButton.Checked)
             {
                 paciente.Sexo = 0;
             }else
@@ -72,33 +72,28 @@ namespace VaccineWebControlSystem.Registros
             paciente.Cedula = CedulaTextBox.Text;
         }
 
-        private void Mensajes(string mensaje)
-        {
-            Response.Write("<script>alert('" + mensaje + "');</script>");
-        }
-
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
             Pacientes paciente = new Pacientes();
             if (IdTextBox.Text == "")
             {
-                Mensajes("Introdusca el ID");
+                Utility.ShowToastr(this, "Introdusca el ID", "Mensaje", "info");
             }
             else
-            if (Utility.ConvertirToEntero(IdTextBox.Text) != 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) != 0)
             {
-                if (paciente.Buscar(Utility.ConvertirToEntero(IdTextBox.Text)))
+                if (paciente.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarCampos(paciente);
                 }
                 else
                 {
-                    Mensajes("Id no exite");
+                    Utility.ShowToastr(this, "Id no exite", "Mensaje", "inf");
                 }
             }
             else
             {
-                Mensajes("Id no encontrado");
+                Utility.ShowToastr(this, "Id no encontrado", "Mensaje", "info");
             }
         }
 
@@ -110,36 +105,36 @@ namespace VaccineWebControlSystem.Registros
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
             Pacientes paciente = new Pacientes();
-            if (Utility.ConvertirToEntero(IdTextBox.Text) == 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) == 0)
             {
-
                 LlenarDatos(paciente);
                 if (paciente.Insertar())
                 {
-                    Mensajes("Paciente Guardado");
+                    Limpiar();
+                    Utility.ShowToastr(this, "Paciente Guardado", "Mensaje", "success");
                 }
                 else
                 {
-                    Mensajes("Error al Guardar");
+                    Utility.ShowToastr(this, "Error no al Guardar", "Mensaje", "error");
                 }
-                Limpiar();
             }
             else
-            if (Utility.ConvertirToEntero(IdTextBox.Text) > 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) > 0)
             {
-                if (paciente.Buscar(Utility.ConvertirToEntero(IdTextBox.Text)))
+                if (paciente.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarDatos(paciente);
                     if (paciente.Editar())
                     {
-                        Mensajes("Paciente Editado");
+                        Limpiar();
+                        Utility.ShowToastr(this, "Paciente Editado", "Mensaje", "success");
                     }
                     else
                     {
-                        Mensajes("Error al Guardar");
+                        Utility.ShowToastr(this, "Error al Editar", "Mensaje", "info");
                     }
                 }
-                Limpiar();
+
             }
         }
 
@@ -147,22 +142,25 @@ namespace VaccineWebControlSystem.Registros
         {
             Pacientes paciente = new Pacientes();
 
-            if (Utility.ConvertirToEntero(IdTextBox.Text) == 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) == 0)
             {
-                Mensajes("Debe Ingresar el ID");
+                Utility.ShowToastr(this, "Debe ingresar el Id", "Mensaje", "info");
             }
             else
-                if (paciente.Buscar(Utility.ConvertirToEntero(IdTextBox.Text)))
+            {
+                if (paciente.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
-                    paciente.Eliminar();
-                    Mensajes("Paciente Eliminado");
-                    Limpiar();
+                    if (paciente.Eliminar())
+                    {
+                        Limpiar();
+                        Utility.ShowToastr(this, "Paciente Eliminado", "Mensaje", "success");
+                    }
+                    else
+                    {
+                        Utility.ShowToastr(this, "Error al ELiminar", "Mensaje", "error");
+                    }
                 }
-                else
-                {
-                    Mensajes("Error Paciente no se Elimino");
-                    Limpiar();
-                }
+            }
         }
     }
 }

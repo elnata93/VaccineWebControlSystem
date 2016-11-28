@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <div class="col-md-3">
                             <asp:Label ID="Label9" runat="server" Text="Fecha:"></asp:Label>
-                            <asp:TextBox ID="FechaVacunaTextBox" runat="server" CssClass="form-control" Type="date" cssTextMode="Date"></asp:TextBox>
+                            <asp:TextBox ID="FechaVacunaTextBox" runat="server" CssClass="form-control" Type="date" TextMode="Date"></asp:TextBox>
                         </div>
                         <div class="col-md-8">
                         </div>

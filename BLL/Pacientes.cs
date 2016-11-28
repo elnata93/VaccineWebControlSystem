@@ -65,7 +65,7 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("update Pacientes set Nombres='{0}',Apellidos='{1}',Edad={2},Sexo={3},Direccion='{4}',Telefono='{5}',Cedula = {6} where PacienteId = {7} ",
+                retorno = conexion.Ejecutar(String.Format("update Pacientes set Nombres='{0}',Apellidos='{1}',Edad={2},Sexo={3},Direccion='{4}',Telefono='{5}',Cedula = '{6}' where PacienteId = {7} ",
                     this.Nombres, this.Apellidos, this.Edad, this.Sexo, this.Direccion, this.Telefono, this.Cedula, this.PacienteId));
 
             }

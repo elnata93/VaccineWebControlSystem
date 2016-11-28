@@ -8,7 +8,6 @@
     <script src="/js/toastr.min.js"></script>
     <link href="/css/toastr.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <link href="/css/css.css" rel="stylesheet" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,7 +76,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
+                                <a href="LogOut.aspx"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -85,58 +84,71 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-
+                        <%-- Redistros --%>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>Registros <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
-                                    <a href="/Registros/Registro_Ciudades.aspx">Ciudades</a>
+                                    <a href="/Registros/Registro_Ciudades.aspx">Registrar Ciudades</a>
                                 </li>
                                 <li>
-                                    <a href="/Registros/Registro_Provincias.aspx">Provincias</a>
+                                    <a href="/Registros/Registro_Provincias.aspx">Registrar Provincias</a>
                                 </li>
                                 <li>
-                                    <a href="/Registros/Registro_Municipios.aspx">Municipios</a>
+                                    <a href="/Registros/Registro_Municipios.aspx">Registrar Municipios</a>
                                 </li>
                                 <li>
-                                    <a href="/Registros/Registro_Usuarios.aspx">Usuarios</a>
+                                    <a href="/Registros/Registro_Usuarios.aspx">Registrar Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="/Registros/Registro_Vacunas.aspx">Vacunas</a>
+                                    <a href="/Registros/Registro_Vacunas.aspx">Registrar Vacunas</a>
                                 </li>
                                 <li>
-                                    <a href="/Registros/Registro_Pacientes.aspx">Pacientes</a>
+                                    <a href="/Registros/Registro_Pacientes.aspx">Registrar Pacientes</a>
                                 </li>
                                 <li>
-                                    <a href="/Registros/Registro_Historiales.aspx">Historiales</a>
+                                    <a href="/Registros/Registro_Historiales.aspx">Registrar Historiales</a>
                                 </li>
                             </ul>
+
+
                         </li>
                         <%--Consultas--%>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Consultas <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo1" class="collapse">
                                 <li>
-                                    <a href="/Consultas/Consultar_Ciudades.aspx">Ciudades</a>
+                                    <a href="/Consultas/Consultar_Ciudades.aspx">Consultar Ciudades</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consultar_Provincias.aspx">Provincias</a>
+                                    <a href="/Consultas/Consultar_Provincias.aspx">Consultar Provincias</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consultar_Municipios.aspx">Municipios</a>
+                                    <a href="/Consultas/Consultar_Municipios.aspx">Consultar Municipios</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consultar_Usuarios.aspx">Usuarios</a>
+                                    <a href="/Consultas/Consultar_Usuarios.aspx">Consultar Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consultar_Vacunas.aspx">Vacunas</a>
+                                    <a href="/Consultas/Consultar_Vacunas.aspx">Consultar Vacunas</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consultar_Pacientes.aspx">Pacientes</a>
+                                    <a href="/Consultas/Consultar_Pacientes.aspx">Consultar Pacientes</a>
                                 </li>
                                 <li>
-                                    <a href="/Consultas/Consultar_Historiales.aspx">Historiales</a>
+                                    <a href="/Consultas/Consultar_Historiales.aspx">Consultar Historiales</a>
                                 </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>Ayuda <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="demo2" class="collapse">
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>Catactenos <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="demo3" class="collapse">
                             </ul>
                         </li>
                     </ul>
@@ -146,28 +158,28 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
 
-            
+
         </div>
         <!-- /#wrapper -->
 
     </form>
 
     <!-- Map Section -->
-            <div id="map"></div>
+    <div id="map"></div>
 
-            <!-- Footer -->
-            <fieldset>
-                <div class="container">
+    <!-- Footer -->
+    <fieldset>
+        <div class="container">
 
-                    <div class="row">
-                        <div class="lib-footer">
-                            <div class="container text-center">
-                                <p>Copyright &copy; Your Website 2016</p>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="lib-footer">
+                    <div class="container text-center">
+                        <p>Copyright &copy; Your Website 2016</p>
                     </div>
                 </div>
-            </fieldset>
+            </div>
+        </div>
+    </fieldset>
 
     <!-- jQuery -->
     <script src="/js/jquery.js"></script>

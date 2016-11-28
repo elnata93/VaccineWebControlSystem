@@ -16,12 +16,7 @@ namespace VaccineWebControlSystem.Registros
         }
         Ciudades ciuda = new Ciudades();
 
-        private int Id(string cadena)
-        {
-            int id = 0;
-            int.TryParse(cadena, out id);
-            return id;
-        }
+        
         private void LlenarCampos()
         {
             DescripcionTextBox.Text = ciuda.descripcion;
@@ -31,24 +26,24 @@ namespace VaccineWebControlSystem.Registros
         {
             if (IdTextBox.Text == "")
             {
-                //Utility.ShowToastr(this,"Introdusca el ID","Mensaje","Exito");
-                Response.Write("<script>alert('Introdusca el ID')</script>");
+                Utility.ShowToastr(this,"Introdusca el ID","Mensaje","info");
+                
             }
             else
-            if (Id(IdTextBox.Text) != 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) != 0)
             {
-                if (ciuda.Buscar(Id(IdTextBox.Text)))
+                if (ciuda.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarCampos();
                 }
                 else
                 {
-                    Response.Write("<script>alert('Id no exite')</script>");
+                   Utility.ShowToastr(this,"Id no exite","Mensaje","info");
                 }
             }
             else
             {
-                Response.Write("<script>alert('Id no encontrado')</script>");
+                Utility.ShowToastr(this, "Id no encotrado", "Mensaje", "info");
             }
 
         }
@@ -69,66 +64,67 @@ namespace VaccineWebControlSystem.Registros
         {
             ciuda.descripcion = DescripcionTextBox.Text;
         }
+
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
 
             if (DescripcionTextBox.Text.Length == 0 )
             {
-                Response.Write("<script>alert('Hay campos sin completar')<script>");
+                Utility.ShowToastr(this,"Hay campos sin completar","Mensaje","info");
             }
             else
 
-            if (Id(IdTextBox.Text) == 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) == 0)
             {
 
                 LlenarDatos();
                 if (ciuda.Insertar())
                 {
-                    Response.Write("<script>alert('Ciudad Guardado')<script>");
+                    Utility.ShowToastr(this, "Ciudad Guardar", "Mensaje", "success");
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error al Guardar')</script>");
+                    Utility.ShowToastr(this, "Error al guardar", "Mensaje", "error");
                 }
-                //Limpiar();
+                Limpiar();
             }
             else
-            if (Id(IdTextBox.Text) > 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) > 0)
             {
-                if (ciuda.Buscar(Id(IdTextBox.Text)))
+                if (ciuda.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarDatos();
                     if (ciuda.Editar())
                     {
-                        Response.Write("<script>alert('Ciudad Guardado')<script>");
+                        Utility.ShowToastr(this, "Ciudad Editada", "Mensaje", "success");
                     }
                     else
                     {
-                        Response.Write("<script>alert('Error al Guardar')</script>");
+                        Utility.ShowToastr(this, "Error al editar", "Mensaje", "error");
                     }
                 }
-                //Limpiar();
+                Limpiar();
             }
         }
 
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
-            if (IdTextBox.Text.Length == 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) == 0)
             {
-                Response.Write("<script>alert('Debe Ingresar el ID')<script>");
+                Utility.ShowToastr(this, "Debe ingresar el Id", "Mensaje", "info");
             }
             else
             {
-                if (ciuda.Buscar(Id(IdTextBox.Text)))
+                if (ciuda.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     ciuda.Eliminar();
-                    Response.Write("<script>alert('Ciudad Eliminado')<script>");
-                    //Limpiar();
+                    Utility.ShowToastr(this, "Ciudad Eliminada", "Mensaje", "success");
+                    Limpiar();
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error Ciudad no se Elimino')<script>");
-                    //Limpiar();
+                    Utility.ShowToastr(this, "Error", "Mensaje", "error");
+                    Limpiar();
                 }
             }
         }

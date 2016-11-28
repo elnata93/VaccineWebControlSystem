@@ -10,8 +10,8 @@ namespace VaccineWebControlSystem.Registros
 {
     public partial class Registro_Usuarios : System.Web.UI.Page
     {
-        
-        
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -30,58 +30,56 @@ namespace VaccineWebControlSystem.Registros
             CiudadDropDownList.DataBind();
 
         }
-
-       
-
         
-
-        private int Id(string cadena)
-        {
-            int id = 0;
-            int.TryParse(cadena, out id);
-            return id;
-        }
 
         private void LlenarCampos(Usuarios user)
         {
-            NombreTextBox.Text = user.nombre;
-            ApellidoTextBox.Text = user.apellido;
-            DireccionTextBox.Text = user.direccion;
+            NombreTextBox.Text = user.Nombre;
+            ApellidoTextBox.Text = user.Apellido;
+            if (user.Sexo == 0)
+            {
+                MasculinoRadioButton.Checked = true;
+            }
+            else
+            {
+                FemeninoRadioButton.Checked = true;
+            }
+            DireccionTextBox.Text = user.Direccion;
             CedulaTextBox.Text = user.Cedula;
-            TelefonoTextBox.Text = user.telefono;
-            EmailTextBox.Text = user.email;
-            CiudadDropDownList.Text = Convert.ToInt32(user.ciudadId).ToString();
-            NombreUsuarioTextBox.Text = user.nommbreUsuario;
-            TipoUsuarioDropDownList.Text = user.tipoUsuario;
-            ContrasenaTextBox.Text = user.contrasena;
+            TelefonoTextBox.Text = user.Telefono;
+            EmailTextBox.Text = user.Email;
+            CiudadDropDownList.Text = Convert.ToInt32(user.CiudadId).ToString();
+            NombreUsuarioTextBox.Text = user.NommbreUsuario;
+            TipoUsuarioDropDownList.Text = user.TipoUsuario;
+            ContrasenaTextBox.Text = user.Contrasena;
         }
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
             Usuarios user = new Usuarios();
-            Utility.ShowToastr(this, "Introdusca el ID","Error","Success");
-            //Page.ClientScript.RegisterStartupScript(this.GetType(), "toastr_message", "toastr.success('TODO BIEN', 'BIEN')", true);
-            //if (IdTextBox.Text == "")
-            //{
-            //}
-            //else
-            //if (Id(IdTextBox.Text) != 0)
-            //{
-            //    if (user.Buscar(Id(IdTextBox.Text)))
-            //    {
-            //        LlenarCampos(user);
-            //    }
-            //    else
-            //    {
 
-            //        Utility.ShowToastr(this, "Id no exite", "Error", "Success");
-            //    }
-            //}
-            //else
-            //{
-            //    Utility.ShowToastr(this, "Id no encontrado", "Error", "Success");
+            if (IdTextBox.Text == "")
+            {
+                Utility.ShowToastr(this, "Introdusca el ID", "Mensaje", "error");
+            }
+            else
+            if (Utility.ConvertirToInt(IdTextBox.Text) != 0)
+            {
+                if (user.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
+                {
+                    LlenarCampos(user);
+                }
+                else
+                {
 
-            //}
+                    Utility.ShowToastr(this, "Id no exite", "Error", "info");
+                }
+            }
+            else
+            {
+                Utility.ShowToastr(this, "Id no encontrado", "Error", "info");
+
+            }
         }
 
         private void Limpiar()
@@ -89,13 +87,15 @@ namespace VaccineWebControlSystem.Registros
             IdTextBox.Text = "";
             NombreTextBox.Text = "";
             ApellidoTextBox.Text = "";
+            MasculinoRadioButton.Checked = false;
+            FemeninoRadioButton.Checked = false;
             DireccionTextBox.Text = "";
             CedulaTextBox.Text = "";
             TelefonoTextBox.Text = "";
             EmailTextBox.Text = "";
-            CiudadDropDownList.SelectedIndex = 0;
+            CiudadDropDownList.ClearSelection();
             NombreUsuarioTextBox.Text = "";
-            TipoUsuarioDropDownList.SelectedIndex = 0;
+            TipoUsuarioDropDownList.ClearSelection();
             ContrasenaTextBox.Text = "";
             ConfContrasenaTextBox.Text = "";
 
@@ -108,16 +108,24 @@ namespace VaccineWebControlSystem.Registros
 
         private void LlenarDatos(Usuarios user)
         {
-            user.nombre = NombreTextBox.Text;
-            user.apellido = ApellidoTextBox.Text;
-            user.direccion = DireccionTextBox.Text;
+            user.Nombre = NombreTextBox.Text;
+            user.Apellido = ApellidoTextBox.Text;
+            if (MasculinoRadioButton.Checked)
+            {
+                user.Sexo = 0;
+            }
+            else
+            {
+                user.Sexo = 1;
+            }
+            user.Direccion = DireccionTextBox.Text;
             user.Cedula = CedulaTextBox.Text;
-            user.telefono = TelefonoTextBox.Text;
-            user.email = EmailTextBox.Text;
-            user.ciudadId = Convert.ToInt32(CiudadDropDownList.Text);
-            user.nommbreUsuario = NombreUsuarioTextBox.Text;
-            user.tipoUsuario = TipoUsuarioDropDownList.Text;
-            user.contrasena = ContrasenaTextBox.Text;
+            user.Telefono = TelefonoTextBox.Text;
+            user.Email = EmailTextBox.Text;
+            user.CiudadId = Utility.ConvertirToInt(CiudadDropDownList.Text);
+            user.NommbreUsuario = NombreUsuarioTextBox.Text;
+            user.TipoUsuario = TipoUsuarioDropDownList.Text;
+            user.Contrasena = ContrasenaTextBox.Text;
         }
 
         protected void GuardarButton_Click(object sender, EventArgs e)
@@ -125,7 +133,7 @@ namespace VaccineWebControlSystem.Registros
             Usuarios user = new Usuarios();
             if (string.IsNullOrWhiteSpace(IdTextBox.Text))
             {
-               LlenarDatos(user);
+                LlenarDatos(user);
                 if (user.Insertar())
                 {
                     Limpiar();
@@ -133,14 +141,14 @@ namespace VaccineWebControlSystem.Registros
                 }
                 else
                 {
-                   Utility.ShowToastr(this, "error", "Mensaje", "error");
+                    Utility.ShowToastr(this, "error", "Mensaje", "error");
                 }
-               
+
             }
             else
             if (IdTextBox.Text.Length > 0)
             {
-                if (user.Buscar(Id(IdTextBox.Text)))
+                if (user.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarDatos(user);
                     if (user.Editar())
@@ -153,7 +161,7 @@ namespace VaccineWebControlSystem.Registros
                         Utility.ShowToastr(this, "error", "Mensaje", "error");
                     }
                 }
-                
+
             }
         }
 
@@ -162,20 +170,25 @@ namespace VaccineWebControlSystem.Registros
             Usuarios user = new Usuarios();
             if (IdTextBox.Text.Length == 0)
             {
-                //Mensajes("Debe Ingresar el ID");
+                Utility.ShowToastr(this, "Debe Ingresar el ID", "Mensaje", "info");
             }
             else
             {
-                if (user.Buscar(Id(IdTextBox.Text)))
+                if (user.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
-                    user.Eliminar();
-                    //Mensajes("Usuario Eliminado");
-                    //Limpiar();
+                    if (user.Eliminar())
+                    {
+                        Limpiar();
+                        Utility.ShowToastr(this, "Usuario Eliminado", "Mensaje", "success");
+                    }
+                    else
+                    {
+                        Utility.ShowToastr(this, "Error Usuario no se Elimino", "Mensaje", "error");
+                    }
                 }
                 else
                 {
-                    //Mensajes("Error Usuario no se Elimino");
-                    //Limpiar();
+                    Utility.ShowToastr(this, "Error ", "Mensaje", "error");
                 }
             }
         }

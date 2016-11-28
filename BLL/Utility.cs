@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
+using System.Data;
+using Microsoft.Reporting.WebForms;
 
 namespace BLL
 {
     public static class Utility
     {
 
-        public static int ConvertirToEntero(string numero)
+        public static int ConvertirToInt(string numero)
         {
             int num;
             int.TryParse(numero, out num);
@@ -22,12 +24,20 @@ namespace BLL
                   String.Format("toastr.{0}('{1}', '{2}');", type.ToLower(), message, title), addScriptTags: true);
         }
 
-        //public static void Mensajes(string mensaje)
-        //{
-        //    Console.Write("<script>alert('" + mensaje + "');</script>");
-        //}
+        public static void ConfigurarReporte(ReportViewer rv, string ruta, string DataSets, DataTable listado)
+        {
+            rv.LocalReport.DataSources.Clear();
+            rv.ProcessingMode = ProcessingMode.Local;
 
-        //public static void FechaConvert(string fecha)
+
+            rv.LocalReport.ReportPath = ruta;
+            ReportDataSource sourse = new ReportDataSource(DataSets, listado);
+
+            rv.LocalReport.DataSources.Add(sourse);
+            rv.LocalReport.Refresh();
+        }
+
+        //public static void ConvertToDate(string fecha)
         //{
         //    fecha = DateTime.Now.ToString("dd/MM/yyy");                                                                                                                              ch;
         //}

@@ -10,50 +10,66 @@ namespace BLL
     public class Usuarios : ClaseMaestra
     {
         ConexionDb conexion = new ConexionDb();
-        public int usuarioId { get; set; }
-        public string imagen { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string direccion { get; set; }
+        public int UsuarioId { get; set; }
+        public string Imagen { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public int Sexo { get; set; }
+        public string Direccion { get; set; }
         public string Cedula { get; set; }
-        public string telefono { get; set; }
-        public string email { get; set; }
-        public int ciudadId { get; set; }
-        public string nommbreUsuario { get; set; }
-        public string tipoUsuario { get; set; }
-        public string contrasena { get; set; }
+        public string Telefono { get; set; }
+        public string Email { get; set; }
+        public int CiudadId { get; set; }
+        public string NommbreUsuario { get; set; }
+        public string TipoUsuario { get; set; }
+        public string Contrasena { get; set; }
         
 
         public Usuarios()
         {
-            this.usuarioId = 0;
-            this.imagen = "";
-            this.nombre = "";
-            this.apellido = "";
-            this.direccion = "";
+            this.UsuarioId = 0;
+            this.Imagen = "";
+            this.Nombre = "";
+            this.Apellido = "";
+            this.Sexo = 0;
+            this.Direccion = "";
             this.Cedula = "";
-            this.telefono = "";
-            this.email = "";
-            this.ciudadId = 0;
-            this.nommbreUsuario = "";
-            this.tipoUsuario = "";
-            this.contrasena = "";
+            this.Telefono = "";
+            this.Email = "";
+            this.CiudadId = 0;
+            this.NommbreUsuario = "";
+            this.TipoUsuario = "";
+            this.Contrasena = "";
         }
 
-        public Usuarios(int usuarioid,int ciudadid,string imagen,string nombre,string apellido,string direccion,string cedula,string telefono,string email,string nombreusuario,string tipousuario,string contrasena)
+        public bool IniciarSesion()
         {
-            this.usuarioId = usuarioid;
-            this.imagen = imagen;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.direccion = direccion;
+            DataTable dt = new DataTable();
+            bool retorno = false;
+            dt = conexion.ObtenerDatos(String.Format("select UsuarioId from Usuarios where NombresUsuarios='{0}' And Contrasena='{1}'", this.NommbreUsuario, this.Contrasena));
+            if (dt.Rows.Count == 1)
+            {
+                UsuarioId = (int)dt.Rows[0]["UsuarioId"];
+                retorno = true;
+            }
+
+            return retorno;
+        }
+
+        public Usuarios(int usuarioid,int ciudadid,string imagen,string nombre,string apellido,int sexo,string direccion,string cedula,string telefono,string email,string nombreusuario,string tipousuario,string contrasena)
+        {
+            this.UsuarioId = usuarioid;
+            this.Imagen = imagen;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Direccion = direccion;
             this.Cedula = cedula;
-            this.telefono = telefono;
-            this.email = email;
-            this.ciudadId = ciudadid;
-            this.nommbreUsuario = nombreusuario;
-            this.tipoUsuario = tipousuario;
-            this.contrasena = contrasena;
+            this.Telefono = telefono;
+            this.Email = email;
+            this.CiudadId = ciudadid;
+            this.NommbreUsuario = nombreusuario;
+            this.TipoUsuario = tipousuario;
+            this.Contrasena = contrasena;
            
         }
 
@@ -62,7 +78,8 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("insert into Usuarios(Imagen,Nombres,Apellidos,Direccion,Cedula,Telefono,Email,CiudadId,NombresUsuarios,TipoUsuario,Contrasena) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}',{7},'{8}','{9}','{10}')", this.imagen,this.nombre,this.apellido,this.direccion,this.Cedula,this.telefono,this.email,this.ciudadId,this.nommbreUsuario,this.tipoUsuario,this.contrasena));
+                retorno = conexion.Ejecutar(String.Format("insert into Usuarios(Imagen,Nombres,Apellidos,Sexo,Direccion,Cedula,Telefono,Email,CiudadId,NombresUsuarios,TipoUsuario,Contrasena) values('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},'{9}','{10}','{11}')", 
+                    this.Imagen,this.Nombre,this.Apellido,this.Sexo,this.Direccion,this.Cedula,this.Telefono,this.Email,this.CiudadId,this.NommbreUsuario,this.TipoUsuario,this.Contrasena));
             }
             catch (Exception ex)
             {
@@ -76,7 +93,8 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("update Usuarios set Imagem='{1}',Nombres='{2}',Apellidos='{3}',Direccion='{4}',Cedula='{5}',Telefono='{6}',Email='{7}',CiudadId={8},NombreUsuarios='{9}',TipoUsuario='{10}',Contrasena='{11}' where UsuarioId={12} ", this.imagen, this.nombre, this.apellido, this.direccion, this.Cedula, this.telefono, this.email, this.ciudadId, this.nommbreUsuario, this.tipoUsuario, this.contrasena,this.usuarioId));
+                retorno = conexion.Ejecutar(String.Format("update Usuarios set Imagem='{0}',Nombres='{1}',Apellidos='{2}',Sexo={3},Direccion='{4}',Cedula='{5}',Telefono='{6}',Email='{7}',CiudadId={8},NombreUsuarios='{9}',TipoUsuario='{10}',Contrasena='{11}' where UsuarioId={12} ",
+                    this.Imagen, this.Nombre, this.Apellido, this.Sexo, this.Direccion, this.Cedula, this.Telefono, this.Email, this.CiudadId, this.NommbreUsuario, this.TipoUsuario, this.Contrasena,this.UsuarioId));
             }
             catch (Exception ex)
             {
@@ -91,7 +109,7 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("delete from Usuarios where UsuarioId={0}",this.usuarioId));
+                retorno = conexion.Ejecutar(String.Format("delete from Usuarios where UsuarioId={0}",this.UsuarioId));
             }
             catch (Exception ex)
             {
@@ -110,18 +128,19 @@ namespace BLL
                 if (data.Rows.Count > 0)
                 {
                     
-                    this.usuarioId = (int)data.Rows[0]["UsuarioId"];
-                    this.imagen = data.Rows[0]["Imagen"].ToString();
-                    this.nombre = data.Rows[0]["Nombres"].ToString();
-                    this.apellido = data.Rows[0]["Apellidos"].ToString();
-                    this.direccion = data.Rows[0]["Direccion"].ToString();
+                    this.UsuarioId = (int)data.Rows[0]["UsuarioId"];
+                    this.Imagen = data.Rows[0]["Imagen"].ToString();
+                    this.Nombre = data.Rows[0]["Nombres"].ToString();
+                    this.Apellido = data.Rows[0]["Apellidos"].ToString();
+                    this.Sexo = (int)data.Rows[0]["Sexo"];
+                    this.Direccion = data.Rows[0]["Direccion"].ToString();
                     this.Cedula = data.Rows[0]["Cedula"].ToString();
-                    this.telefono = data.Rows[0]["Telefono"].ToString();
-                    this.email = data.Rows[0]["Email"].ToString();
-                    this.ciudadId = (int)data.Rows[0]["CiudadId"];
-                    this.nommbreUsuario = data.Rows[0]["NombresUsuarios"].ToString();
-                    this.tipoUsuario = data.Rows[0]["TipoUsuario"].ToString();
-                    this.contrasena = data.Rows[0]["Contrasena"].ToString();
+                    this.Telefono = data.Rows[0]["Telefono"].ToString();
+                    this.Email = data.Rows[0]["Email"].ToString();
+                    this.CiudadId = (int)data.Rows[0]["CiudadId"];
+                    this.NommbreUsuario = data.Rows[0]["NombresUsuarios"].ToString();
+                    this.TipoUsuario = data.Rows[0]["TipoUsuario"].ToString();
+                    this.Contrasena = data.Rows[0]["Contrasena"].ToString();
                 }
                 return data.Rows.Count > 0;
             }

@@ -14,48 +14,36 @@ namespace VaccineWebControlSystem.Registros
         {
 
         }
-        Vacunas vacu = new Vacunas();
 
-        private int Id(string cadena)
-        {
-            int id = 0;
-            int.TryParse(cadena, out id);
-            return id;
-        }
-        private void LlenarCampos()
+
+        private void LlenarCampos(Vacunas vacu)
         {
             DescripcionTextBox.Text = vacu.Descripcion;
-
-        }
-
-        private void Mensajes(string mensaje)
-        {
-            Response.Write("<script>alert('" + mensaje + "');</script>");
         }
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
+            Vacunas vacu = new Vacunas();
             if (IdTextBox.Text == "")
             {
-                Mensajes("Introdusca el ID");
+                Utility.ShowToastr(this, "Introdusca el ID", "Mensaje", "info");
             }
             else
-            if (Id(IdTextBox.Text) != 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) != 0)
             {
-                if (vacu.Buscar(Id(IdTextBox.Text)))
+                if (vacu.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
-                    LlenarCampos();
+                    LlenarCampos(vacu);
                 }
                 else
                 {
-                    Mensajes("Id no exite");
+                    Utility.ShowToastr(this, "Id no exite", "Mensaje", "info");
                 }
             }
             else
             {
-                Mensajes("Id no encontrado");
+                Utility.ShowToastr(this, "Id no encontrado", "Mensaje", "info");
             }
-
         }
 
         private void Limpiar()
@@ -70,70 +58,78 @@ namespace VaccineWebControlSystem.Registros
             Limpiar();
         }
 
-        private void LlenarDatos()
+        private void LlenarDatos(Vacunas vacu)
         {
             vacu.Descripcion = DescripcionTextBox.Text;
         }
+
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
-
+            Vacunas vacu = new Vacunas();
             if (DescripcionTextBox.Text.Length == 0)
             {
-                Mensajes("Hay campos sin completar");
+                Utility.ShowToastr(this, "Hay campos sin completar", "Mensaje", "info");
             }
             else
 
-            if (Id(IdTextBox.Text) == 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) == 0)
             {
-
-                LlenarDatos();
+                LlenarDatos(vacu);
                 if (vacu.Insertar())
                 {
-                    Mensajes("vacud Guardado");
+                    Limpiar();
+                    Utility.ShowToastr(this, "Vacuna Guardada", "Mensaje", "success");
                 }
                 else
                 {
-                    Mensajes("Error al Guardar");
+                    Utility.ShowToastr(this, "Error al Guardar", "Mensaje", "error");
                 }
-                //Limpiar();
             }
             else
-            if (Id(IdTextBox.Text) > 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) > 0)
             {
-                if (vacu.Buscar(Id(IdTextBox.Text)))
+                if (vacu.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
-                    LlenarDatos();
+                    LlenarDatos(vacu);
                     if (vacu.Editar())
                     {
-                        Mensajes("Vacuna Guardado");
+                        Limpiar();
+                        Utility.ShowToastr(this, "Vacuna Editada", "Mensaje", "success");
                     }
                     else
                     {
-                        Mensajes("Error al Guardar");
+                        Utility.ShowToastr(this, "Error al Editar", "Mensaje", "error");
                     }
                 }
-                //Limpiar();
             }
         }
 
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
+            Vacunas vacu = new Vacunas();
             if (IdTextBox.Text.Length == 0)
             {
-                Mensajes("Debe Ingresar el ID");
+                Utility.ShowToastr(this, "Debe Ingresar el ID", "Mensaje", "info");
             }
             else
             {
-                if (vacu.Buscar(Id(IdTextBox.Text)))
+                if (vacu.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
-                    vacu.Eliminar();
-                    Mensajes("Vacuna Eliminado");
-                    //Limpiar();
+                    if (vacu.Eliminar())
+                    {
+                        Limpiar();
+                        Utility.ShowToastr(this, "Vacuna Eliminado", "Mensaje", "success");
+                    }
+                    else
+                    {
+                        Utility.ShowToastr(this, "Error Vacuna no se Elimino", "Mensaje", "error");
+
+                    }
+
                 }
                 else
                 {
-                    Mensajes("Error Vacuna no se Elimino");
-                    //Limpiar();
+                    Utility.ShowToastr(this, "error", "Mensaje", "error");
                 }
             }
         }

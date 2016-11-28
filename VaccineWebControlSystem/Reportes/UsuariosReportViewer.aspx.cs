@@ -21,11 +21,14 @@ namespace VaccineWebControlSystem.Reportes
         {
             if (!IsPostBack)
             {
+
                 UsuariosreportViewer.LocalReport.DataSources.Clear();
                 UsuariosreportViewer.ProcessingMode = ProcessingMode.Local;
 
-                UsuariosreportViewer.LocalReport.ReportPath = @"Reportes\UsuariosReport.rdlc";
-
+                //UsuariosreportViewer.LocalReport.ReportPath = this.reporte;
+                //UsuariosreportViewer.LocalReport.ReportPath = @"Reportes\UsuariosReport.rdlc";
+                //data = Usuarios.ListadoUs("1=1");
+                //ReportDataSource source = new ReportDataSource(this.data.TableName, this.data);
                 ReportDataSource source = new ReportDataSource("Usuarios", Usuarios.ListadoUs("1=1"));
 
                 UsuariosreportViewer.LocalReport.DataSources.Add(source);

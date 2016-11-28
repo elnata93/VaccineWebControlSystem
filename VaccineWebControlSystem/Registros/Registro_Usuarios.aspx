@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Registro_Usuarios.aspx.cs" Inherits="VaccineWebControlSystem.Registros.Registro_Usuarios" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
+    <%--<style type="text/css">
         .auto-style1 {
             width: 951px;
             height: 316px;
@@ -14,7 +14,7 @@
         .auto-style3 {
             width: 656px;
         }
-    </style>
+    </style>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
@@ -47,39 +47,64 @@
                         </div>
                         <asp:Label ID="Label2" runat="server" Text="Nombre"></asp:Label>
                         <asp:TextBox ID="NombreTextBox" runat="server" CssClass="form-control" placeholder="Nombre"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorNombre" runat="server" ErrorMessage="Campo requerido" ControlToValidate="NombreTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+                        <br />
                         <asp:Label ID="Label3" runat="server" Text="Apellido"></asp:Label>
                         <asp:TextBox ID="ApellidoTextBox" CssClass="form-control" placeholder="Apellido" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorApellido" runat="server" ErrorMessage="Campo requerido" ControlToValidate="ApellidoTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+                        <br />
+                        <asp:Label ID="Label13" runat="server" Text="Sexo:"></asp:Label>
+                        <br />
+                        <asp:RadioButton ID="MasculinoRadioButton" Checked="True" GroupName="RadioGroup1" runat="server" Text="Masculino" />
+                        <asp:RadioButton ID="FemeninoRadioButton" GroupName="RadioGroup1" runat="server" Text="Femenino" />
+                        <br />
+                        <%-- Validate RadioButton --%>
+
+                        <br />
                         <asp:Label ID="Label4" runat="server" Text="Direccion"></asp:Label>
                         <asp:TextBox ID="DireccionTextBox" runat="server" CssClass="form-control" placeholder="Direccion"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorDireccion" runat="server" ErrorMessage="Campo requerido" ControlToValidate="DireccionTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+                        <br />
                         <asp:Label ID="Label5" runat="server" Text="Cedula"></asp:Label>
                         <asp:TextBox ID="CedulaTextBox" runat="server" CssClass="form-control" placeholder="Cedula"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorCedula" runat="server" ErrorMessage="Campo requerido" ControlToValidate="CedulaTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+                        <br />
                         <asp:Label ID="Label6" runat="server" Text="Telefono"></asp:Label>
                         <asp:TextBox ID="TelefonoTextBox" runat="server" CssClass="form-control" placeholder="Telefono"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorTelefono" runat="server" ErrorMessage="Campo requerido" ControlToValidate="TelefonoTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+                        <br />
                         <asp:Label ID="Label7" runat="server" Text="Email"></asp:Label>
                         <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="EmailTextBox" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="A"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ControlToValidate="EmailTextBox" ErrorMessage="Correo invalido" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="A"></asp:RegularExpressionValidator>
                         <br />
-                        <asp:Label ID="Label8" runat="server" Text="Cedula"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="Campo requerido" ControlToValidate="EmailTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+                        <br />
+                        <asp:Label ID="Label8" runat="server" Text="Ciudad"></asp:Label>
                         <asp:DropDownList ID="CiudadDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
                         <asp:Label ID="Label9" runat="server" Text="Nombre de Usuario"></asp:Label>
                         <asp:TextBox ID="NombreUsuarioTextBox" runat="server" CssClass="form-control" placeholder="Nombre de Usuario"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorNombreUsuario" runat="server" ErrorMessage="Campo requerido" ControlToValidate="NombreUsuarioTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+                        <br />
                         <asp:Label ID="Label10" runat="server" Text="Tipo de Usurio"></asp:Label>
                         <asp:DropDownList ID="TipoUsuarioDropDownList" runat="server" CssClass="form-control">
                             <asp:ListItem>Administrador</asp:ListItem>
                             <asp:ListItem>Empleado</asp:ListItem>
                         </asp:DropDownList>
+
+                        <br />
                         <asp:Label ID="Label11" runat="server" Text="Contraseña"></asp:Label>
-                        <asp:TextBox ID="ContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>                 
-                              <asp:RequiredFieldValidator ID="RequiredFieldValidatorContrasena" runat="server" ErrorMessage="Campo requerido" ValidationGroup="A" ControlToValidate="ContrasenaTextBox" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                        <asp:Label ID="Label12" runat="server" Text="Confimar Contraseña" ForeColor="Red"></asp:Label>
+                        <asp:TextBox ID="ContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorContrasena" runat="server" ErrorMessage="Campo requerido" ValidationGroup="A" ControlToValidate="ContrasenaTextBox" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <br />
+                        <asp:Label ID="Label12" runat="server" Text="Confimar Contraseña"></asp:Label>
                         <asp:TextBox ID="ConfContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confimar Contraseña"></asp:TextBox>
-                    </div>
-
-                    <div class="form-horizontal col-lg-12 " role="form">
                         <asp:CompareValidator ID="CompareValidatorContrasena" runat="server" ControlToCompare="ContrasenaTextBox" ControlToValidate="ConfContrasenaTextBox" ErrorMessage="No coinciden" ForeColor="Red" ValidationGroup="A"></asp:CompareValidator>
                         <br />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorConfirmarContrasena" runat="server" ControlToValidate="ConfContrasenaTextBox" ErrorMessage="Campo requerido" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+
+                    </div>
+
+                    <div class="form-horizontal col-lg-12 " role="form">
                         <br />
                         <br />
                         <div class="form-group ">

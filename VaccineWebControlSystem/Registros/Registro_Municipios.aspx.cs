@@ -16,12 +16,7 @@ namespace VaccineWebControlSystem.Registros
 
         }
         Municipios muni = new Municipios();
-        private int Id(string cadena)
-        {
-            int id = 0;
-            int.TryParse(cadena, out id);
-            return id;
-        }
+       
         private void LlenarCampos()
         {
             DescripcionTextBox.Text = muni.Descripcion;
@@ -31,23 +26,23 @@ namespace VaccineWebControlSystem.Registros
         {
             if (IdTextBox.Text == "")
             {
-                Response.Write("<script>alert('Introdusca el ID')</script>");
+                Utility.ShowToastr(this,"Introdusca el ID","Mensaje","info");
             }
             else
-            if (Id(IdTextBox.Text) != 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) != 0)
             {
-                if (muni.Buscar(Id(IdTextBox.Text)))
+                if (muni.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarCampos();
                 }
                 else
                 {
-                    Response.Write("<script>alert('Id no exite')</script>");
+                    Utility.ShowToastr(this, "Id no Exite", "Mensaje", "info");
                 }
             }
             else
             {
-                Response.Write("<script>alert('Id no encontrado')</script>");
+                Utility.ShowToastr(this, "Id no Encontrado", "Mensaje", "info");
             }
 
         }
@@ -68,45 +63,48 @@ namespace VaccineWebControlSystem.Registros
         {
             muni.Descripcion = DescripcionTextBox.Text;
         }
+
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
 
             if (DescripcionTextBox.Text.Length == 0)
             {
-                Response.Write("<script>alert('Hay campos sin completar')<script>");
+                Utility.ShowToastr(this,"Hay campos sin completar","Mensaje","info");
             }
             else
 
-            if (Id(IdTextBox.Text) == 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) == 0)
             {
 
                 LlenarDatos();
                 if (muni.Insertar())
                 {
-                    Response.Write("<script>alert('munid Guardado')<script>");
+                    Utility.ShowToastr(this, "Muninicipio Guardado", "Mensaje", "success");
+                    Limpiar();
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error al Guardar')</script>");
+                    Utility.ShowToastr(this, "Error al Guardar", "Mensaje", "error");
+                    Limpiar();
                 }
-                //Limpiar();
             }
             else
-            if (Id(IdTextBox.Text) > 0)
+            if (Utility.ConvertirToInt(IdTextBox.Text) > 0)
             {
-                if (muni.Buscar(Id(IdTextBox.Text)))
+                if (muni.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     LlenarDatos();
                     if (muni.Editar())
                     {
-                        Response.Write("<script>alert('munid Guardado')<script>");
+                        Utility.ShowToastr(this, "Muninicipio Editado", "Mensaje", "success");
+                        Limpiar();
                     }
                     else
                     {
-                        Response.Write("<script>alert('Error al Guardar')</script>");
+                        Utility.ShowToastr(this, "Error al Editar", "Mensaje", "error");
+                        Limpiar();
                     }
                 }
-                //Limpiar();
             }
         }
 
@@ -114,20 +112,20 @@ namespace VaccineWebControlSystem.Registros
         {
             if (IdTextBox.Text.Length == 0)
             {
-                Response.Write("<script>alert('Debe Ingresar el ID')<script>");
+                Utility.ShowToastr(this,"Debe Ingresar el Id","Mensaje","info");
             }
             else
             {
-                if (muni.Buscar(Id(IdTextBox.Text)))
+                if (muni.Buscar(Utility.ConvertirToInt(IdTextBox.Text)))
                 {
                     muni.Eliminar();
-                    Response.Write("<script>alert('munid Eliminado')<script>");
-                    //Limpiar();
+                    Utility.ShowToastr(this, "Muninicipio Eliminado", "Mensaje", "success");
+                    Limpiar();
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error munid no se Elimino')<script>");
-                    //Limpiar();
+                    Utility.ShowToastr(this, "Error al Eliminar", "Mensaje", "error");
+                    Limpiar();
                 }
             }
         }

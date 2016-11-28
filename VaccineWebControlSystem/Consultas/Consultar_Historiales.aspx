@@ -39,15 +39,15 @@
                     </div>
                     <div class="col-md-2">
                         <asp:DropDownList ID="FiltroDropDownList" runat="server" CssClass="auto-style4" AutoPostBack="True">
-                            <asp:ListItem Value="UsuarioId">Id</asp:ListItem>
-                            <asp:ListItem>Nombre</asp:ListItem>
+                            <asp:ListItem Value="HistorialId">Id</asp:ListItem>
+                            <asp:ListItem>Paciente</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="col-md-8">
                         <asp:TextBox ID="FiltroTextBox" runat="server" CssClass="form-control" pleaceholder="Filtrar"></asp:TextBox>
                     </div>
                     <div class="col-md-1">
-                        <asp:Button ID="Button1" CssClass="btn btn-info" runat="server" Text="Buscar" OnClick="BuscarButton_Click" />
+                        <asp:Button ID="Button1" CssClass="btn btn-info" runat="server" Text="Buscar" />
                     </div>
                     <br />
                     <div class="container text-center col-md-10">
@@ -60,7 +60,7 @@
                     </asp:GridView>
 
                     <div class="container col-md-11">
-                        <asp:Button ID="ReporteButton" CssClass="btn btn-danger" runat="server" OnClick="ImprimirButton_Click1" Text="Reporte" />
+                        <asp:Button ID="ReporteButton" CssClass="btn btn-danger" runat="server"  Text="Reporte" />
                     </div>
                 </div>
             </div>

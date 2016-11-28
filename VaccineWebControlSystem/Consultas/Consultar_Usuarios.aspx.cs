@@ -19,9 +19,10 @@ namespace VaccineWebControlSystem.Consultas
         {
 
         }
-         Usuarios user = new Usuarios();
+         
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
+            Usuarios user = new Usuarios();
 
             string filtro = "";
             if (string.IsNullOrWhiteSpace(FiltroTextBox.Text))

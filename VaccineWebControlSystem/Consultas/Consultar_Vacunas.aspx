@@ -8,50 +8,29 @@
                 <div class="panel-body">
                     <div class="form-horizontal col-md-12" role="form">
 
-                        <table style="width:100%;">
-                            <tr>
-                                <td class="auto-style1">
-                                    <asp:Label ID="Label1" runat="server" Text="Buscar Por:"></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:DropDownList ID="FiltroDropDownList" runat="server" AutoPostBack="True">
-                                        <asp:ListItem Value="UsuarioId">Id</asp:ListItem>
-                                        <asp:ListItem>Nombre</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:TextBox ID="FiltroTextBox" runat="server" Width="742px"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <asp:Button ID="BuscarButton" runat="server" Text="Buscar" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style1">&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style1">&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </table>
-                        <asp:GridView ID="ConsultaGridView" runat="server" Width="100%">
-                        </asp:GridView>
+                        <div class="col-md-1">
+                        <asp:Label ID="Label2" runat="server" Text="Buscar Por:"></asp:Label>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:DropDownList ID="FiltroDropDownList" runat="server" CssClass="auto-style4" AutoPostBack="True">
+                            <asp:ListItem Value="VacunaId">Id</asp:ListItem>
+                            <asp:ListItem>Descripcion</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-md-8">
+                        <asp:TextBox ID="FiltroTextBox" runat="server" CssClass="form-control" pleaceholder="Filtrar"></asp:TextBox>
+                    </div>
+                    <div class="col-md-1">
+                        <asp:Button ID="BuscarButton" CssClass="btn btn-info" runat="server" Text="Buscar" OnClick="BuscarButton_Click" />
+                    </div>
+                    <br />
 
-                    <table style="width:100%;">
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td class="auto-style2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td class="auto-style2">&nbsp;</td>
-                            <td>
-                                <asp:Button ID="ImprimirButton" runat="server" Text="Imprimir" />
-                            </td>
-                        </tr>
-                    </table>
+                    <asp:GridView ID="ConsultaGridView" runat="server" Width="100%">
+                    </asp:GridView>
+
+                    <div class="container col-md-11">
+                        <asp:Button ID="ReporteButton" CssClass="btn btn-danger" runat="server" Text="Reporte" OnClick="ReporteButton_Click" />
+                    </div>
                 </div>
             </div>
         </div>

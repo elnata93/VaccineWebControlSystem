@@ -29,7 +29,7 @@ namespace BLL
             this.ProvinciaId = 0;
             this.MunicipioId = 0;
             this.PacienteId = 0;
-            historialVacuna = new List<HistorialDetalle>();
+            this.historialVacuna = new List<HistorialDetalle>();
         }
 
         public Historiales(int historialId, string fecha,string centroSalud, int provinciaId, int municipioId, int pacienteId)
@@ -44,7 +44,7 @@ namespace BLL
 
         public void AgregarVacuna( int vacunaId,  int dosis,string fecha)
         {
-            historialVacuna.Add(new HistorialDetalle( vacunaId,  dosis, fecha));
+            this.historialVacuna.Add(new HistorialDetalle( vacunaId,  dosis, fecha));
         }
 
         public override bool Insertar()
@@ -60,7 +60,7 @@ namespace BLL
                 this.HistorialId = retorno;
                 foreach (HistorialDetalle item in historialVacuna)
                 {
-                    conexion.Ejecutar(String.Format("insert into HistorialDetalle(HistorialId,VacunaId,Dosis,Fecha) values({0},{1},{2},'{3}')", retorno,item.VacunaId,item.Dosis,item.Fecha));
+                    conexion.Ejecutar(String.Format("insert into HistorialDetalle(HistorialId,VacunaId,Dosis,Fecha) values({0},{1},{2},'{3}') ", retorno,item.VacunaId,item.Dosis,item.Fecha));
                 }
             }
             catch (Exception ex)
@@ -80,7 +80,7 @@ namespace BLL
                 if (retorno)
                 {
                     conexion.Ejecutar(String.Format("delete from HistorialDetalle where HistorialId={0}", this.HistorialId));
-                    foreach (HistorialDetalle item in historialVacuna)
+                    foreach (HistorialDetalle item in this.historialVacuna)
                     {
                         conexion.Ejecutar(String.Format("insert into HistorialDetalle(HistorialId,VacunaId,Dosis,Fecha) values({0},{1},{2},'{3}')", this.HistorialId, item.VacunaId, item.Dosis,item.Fecha));
                     }
