@@ -72,7 +72,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorCedula" runat="server" ErrorMessage="Campo requerido" ControlToValidate="CedulaTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label6" runat="server" Text="Telefono"></asp:Label>
-                        <asp:TextBox ID="TelefonoTextBox" runat="server" CssClass="form-control" placeholder="Telefono"></asp:TextBox>
+                        <asp:TextBox ID="TelefonoTextBox" runat="server" CssClass="form-control" placeholder="Telefono" TextMode="Phone" ValidationGroup="A"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorTelefono" runat="server" ErrorMessage="Campo requerido" ControlToValidate="TelefonoTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label7" runat="server" Text="Email"></asp:Label>
