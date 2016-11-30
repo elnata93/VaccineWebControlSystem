@@ -43,7 +43,7 @@
                             <asp:RadioButton ID="MasculinoRadioButton" Checked="True" GroupName="RadioGroup1" runat="server" Text="Masculino" />
                             <asp:RadioButton ID="FemeninoRadioButton" GroupName="RadioGroup1" runat="server" Text="Femenino" />
                             <br />
-                            <asp:RangeValidator ID="RangeValidatorSexo" runat="server" ErrorMessage="Campo requerido" ControlToValidate="NombreTextBox" ForeColor="Red" ValidationGroup="A"></asp:RangeValidator>
+<%--                            <asp:RangeValidator ID="RangeValidatorSexo" runat="server" ErrorMessage="Campo requerido" ControlToValidate="NombreTextBox" ForeColor="Red" ValidationGroup="A"></asp:RangeValidator>--%>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label6" runat="server" Text="Direccion:"></asp:Label>

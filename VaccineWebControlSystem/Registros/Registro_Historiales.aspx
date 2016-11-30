@@ -44,26 +44,26 @@
                             <asp:Label ID="Label3" runat="server" Text="Provincia:"></asp:Label>
                             <asp:DropDownList ID="ProvinciaDropDownList" runat="server" CssClass="form-control ">
                             </asp:DropDownList>
-                            <asp:RangeValidator ID="RangeValidatorProvincias" runat="server" ErrorMessage="Seleccione la Provincia" ControlToValidate="ProvinciaDropDownList" ForeColor="Red" ValidationGroup="A"></asp:RangeValidator>
+<%--                            <asp:RangeValidator ID="RangeValidatorProvincias" runat="server" ErrorMessage="Seleccione la Provincia" ControlToValidate="ProvinciaDropDownList" ForeColor="Red" ValidationGroup="A"></asp:RangeValidator>--%>
                         </div>
 
                         <div class="form-group">
                             <asp:Label ID="Label4" runat="server" Text="Municipio:"></asp:Label>
                             <asp:DropDownList ID="MunicipioDropDownList" runat="server" CssClass="form-control ">
                             </asp:DropDownList>
-                            <asp:RangeValidator ID="RangeValidatorMunicipios" runat="server" ErrorMessage="Seleccione el Municipio" ControlToValidate="MunicipioDropDownList" ForeColor="Red" ValidationGroup="A"></asp:RangeValidator>
+<%--                            <asp:RangeValidator ID="RangeValidatorMunicipios" runat="server" ErrorMessage="Seleccione el Municipio" ControlToValidate="MunicipioDropDownList" ForeColor="Red" ValidationGroup="A"></asp:RangeValidator>--%>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label5" runat="server" Text="Paciente:"></asp:Label>
                             <asp:DropDownList ID="PacienteDropDownList" runat="server" CssClass="form-control ">
                             </asp:DropDownList>
-                            <asp:RangeValidator ID="RangeValidatorPacientes" runat="server" ErrorMessage="Seleccione el Paciente" ControlToValidate="PacienteDropDownList" ForeColor="Red" ValidationGroup="A"></asp:RangeValidator>
+<%--                            <asp:RangeValidator ID="RangeValidatorPacientes" runat="server" ErrorMessage="Seleccione el Paciente" ControlToValidate="PacienteDropDownList" ForeColor="Red" ValidationGroup="A"></asp:RangeValidator>--%>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label6" runat="server" Text="Vacuna:"></asp:Label>
                             <asp:DropDownList ID="VacunaDropDownList" runat="server" CssClass="form-control ">
                             </asp:DropDownList>
-                            <asp:RangeValidator ID="RangeValidatorVacunas" runat="server" ErrorMessage="Selecione una vacuna" ControlToValidate="VacunaDropDownList" ForeColor="Red" ValidationGroup="C"></asp:RangeValidator>
+<%--                            <asp:RequiredFieldValidator ID="RangeValidatorVacunas" runat="server" ErrorMessage="Selecione una vacuna" ControlToValidate="VacunaDropDownList" ForeColor="Red" ValidationGroup="C"></asp:RequiredFieldValidator>--%>
                         </div>
 
                         <div class="form-group">
@@ -76,7 +76,7 @@
                             <div class="col-md-3">
                                 <asp:Label ID="Label9" runat="server" Text="Fecha:"></asp:Label>
                                 <asp:TextBox ID="FechaVacunaTextBox" runat="server" CssClass="form-control" Type="date" TextMode="Date"></asp:TextBox>
-                                <asp:RangeValidator ID="RangeValidatorFechaVacuna" runat="server" ErrorMessage="Seleccione la fecha" ControlToValidate="FechaVacunaTextBox" ForeColor="Red" ValidationGroup="C"></asp:RangeValidator>
+<%--                                <asp:RequiredFieldValidator ID="RangeValidatorFechaVacuna" runat="server" ErrorMessage="Seleccione la fecha" ControlToValidate="FechaVacunaTextBox" ForeColor="Red" ValidationGroup="C"></asp:RequiredFieldValidator>--%>
 
                             </div>
                             <div class="col-md-8">

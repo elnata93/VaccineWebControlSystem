@@ -121,15 +121,6 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.DropDownList ProvinciaDropDownList;
         
         /// <summary>
-        /// RangeValidatorProvincias control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorProvincias;
-        
-        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -146,15 +137,6 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList MunicipioDropDownList;
-        
-        /// <summary>
-        /// RangeValidatorMunicipios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorMunicipios;
         
         /// <summary>
         /// Label5 control.
@@ -175,15 +157,6 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.DropDownList PacienteDropDownList;
         
         /// <summary>
-        /// RangeValidatorPacientes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorPacientes;
-        
-        /// <summary>
         /// Label6 control.
         /// </summary>
         /// <remarks>
@@ -200,15 +173,6 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList VacunaDropDownList;
-        
-        /// <summary>
-        /// RangeValidatorVacunas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorVacunas;
         
         /// <summary>
         /// Label8 control.
@@ -254,15 +218,6 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox FechaVacunaTextBox;
-        
-        /// <summary>
-        /// RangeValidatorFechaVacuna control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorFechaVacuna;
         
         /// <summary>
         /// AgregarButton control.
