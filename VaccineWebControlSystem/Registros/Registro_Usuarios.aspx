@@ -48,11 +48,11 @@
                             </div>
                         </div>
                         <asp:Label ID="Label2" runat="server" Text="Nombre"></asp:Label>
-                        <asp:TextBox ID="NombreTextBox" runat="server" CssClass="form-control" placeholder="Nombre"></asp:TextBox>
+                        <asp:TextBox ID="NombreTextBox" runat="server" CssClass="form-control" placeholder="Nombre" ValidationGroup="A"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorNombre" runat="server" ErrorMessage="Campo requerido" ControlToValidate="NombreTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label3" runat="server" Text="Apellido"></asp:Label>
-                        <asp:TextBox ID="ApellidoTextBox" CssClass="form-control" placeholder="Apellido" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="ApellidoTextBox" CssClass="form-control" placeholder="Apellido" runat="server" ValidationGroup="A"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorApellido" runat="server" ErrorMessage="Campo requerido" ControlToValidate="ApellidoTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label13" runat="server" Text="Sexo:"></asp:Label>
@@ -64,11 +64,11 @@
 
                         <br />
                         <asp:Label ID="Label4" runat="server" Text="Direccion"></asp:Label>
-                        <asp:TextBox ID="DireccionTextBox" runat="server" CssClass="form-control" placeholder="Direccion"></asp:TextBox>
+                        <asp:TextBox ID="DireccionTextBox" runat="server" CssClass="form-control" placeholder="Direccion" ValidationGroup="A"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorDireccion" runat="server" ErrorMessage="Campo requerido" ControlToValidate="DireccionTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label5" runat="server" Text="Cedula"></asp:Label>
-                        <asp:TextBox ID="CedulaTextBox" runat="server" CssClass="form-control" placeholder="Cedula"></asp:TextBox>
+                        <asp:TextBox ID="CedulaTextBox" runat="server" CssClass="form-control" placeholder="Cedula" TextMode="Number" ValidationGroup="A"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorCedula" runat="server" ErrorMessage="Campo requerido" ControlToValidate="CedulaTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label6" runat="server" Text="Telefono"></asp:Label>
@@ -76,30 +76,30 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorTelefono" runat="server" ErrorMessage="Campo requerido" ControlToValidate="TelefonoTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label7" runat="server" Text="Email"></asp:Label>
-                        <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                        <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" placeholder="Email" TextMode="Email" ValidationGroup="A"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ControlToValidate="EmailTextBox" ErrorMessage="Correo invalido" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="A"></asp:RegularExpressionValidator>
                         <br />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="Campo requerido" ControlToValidate="EmailTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label8" runat="server" Text="Ciudad"></asp:Label>
-                        <asp:DropDownList ID="CiudadDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
+                        <asp:DropDownList ID="CiudadDropDownList" runat="server" CssClass="form-control" ValidationGroup="A"></asp:DropDownList>
                         <asp:Label ID="Label9" runat="server" Text="Nombre de Usuario"></asp:Label>
-                        <asp:TextBox ID="NombreUsuarioTextBox" runat="server" CssClass="form-control" placeholder="Nombre de Usuario"></asp:TextBox>
+                        <asp:TextBox ID="NombreUsuarioTextBox" runat="server" CssClass="form-control" placeholder="Nombre de Usuario" ValidationGroup="A"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorNombreUsuario" runat="server" ErrorMessage="Campo requerido" ControlToValidate="NombreUsuarioTextBox" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label10" runat="server" Text="Tipo de Usurio"></asp:Label>
-                        <asp:DropDownList ID="TipoUsuarioDropDownList" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="TipoUsuarioDropDownList" runat="server" CssClass="form-control" ValidationGroup="A">
                             <asp:ListItem>Administrador</asp:ListItem>
                             <asp:ListItem>Empleado</asp:ListItem>
                         </asp:DropDownList>
 
                         <br />
                         <asp:Label ID="Label11" runat="server" Text="Contraseña"></asp:Label>
-                        <asp:TextBox ID="ContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>
+                        <asp:TextBox ID="ContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Contraseña" ValidationGroup="A"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorContrasena" runat="server" ErrorMessage="Campo requerido" ValidationGroup="A" ControlToValidate="ContrasenaTextBox" ForeColor="Red"></asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="Label12" runat="server" Text="Confimar Contraseña"></asp:Label>
-                        <asp:TextBox ID="ConfContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confimar Contraseña"></asp:TextBox>
+                        <asp:TextBox ID="ConfContrasenaTextBox" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confimar Contraseña" ValidationGroup="A"></asp:TextBox>
                         <asp:CompareValidator ID="CompareValidatorContrasena" runat="server" ControlToCompare="ContrasenaTextBox" ControlToValidate="ConfContrasenaTextBox" ErrorMessage="No coinciden" ForeColor="Red" ValidationGroup="A"></asp:CompareValidator>
                         <br />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorConfirmarContrasena" runat="server" ControlToValidate="ConfContrasenaTextBox" ErrorMessage="Campo requerido" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
