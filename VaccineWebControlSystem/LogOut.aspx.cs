@@ -13,7 +13,7 @@ namespace VaccineWebControlSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("/Login.aspx");
         }
     }
 }

@@ -117,7 +117,13 @@ namespace BLL
             string ordenFinal = "";
             if (!ordenFinal.Equals(""))
                 ordenFinal = " Order by " + Orden;
-            return conexion.ObtenerDatos(" select " + Campos + " From Pacientes where " + Condicion + Orden);
+            return conexion.ObtenerDatos("select " + Campos + " From Pacientes where " + Condicion + Orden);
+        }
+
+        public static DataTable ListadoPac(string condicion)
+        {
+            ConexionDb conexion = new ConexionDb();
+            return conexion.ObtenerDatos("select PacienteId,Nombres,Apellidos,Sexo,Direccion,Telefono,Cedula from Pacientes where " + condicion);
         }
 
     }

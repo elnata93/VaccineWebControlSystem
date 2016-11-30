@@ -88,5 +88,11 @@ namespace BLL
                 OrdenFinal = "Oder by" + Orden;
             return conexion.ObtenerDatos("select " + Campo + "from Vacunas where " + Condicion + Orden);
         }
+
+        public static DataTable ListadoVac(string condicion)
+        {
+            ConexionDb conexion = new ConexionDb();
+            return conexion.ObtenerDatos("select * from Vacunas where " + condicion);
+        }
     }
 }

@@ -94,7 +94,13 @@ namespace BLL
             string OrdenFinal = "";
             if (!Orden.Equals(""))
                 OrdenFinal = "Order by" + Orden;
-            return conexion.ObtenerDatos("Select" + Campo + "from Provincias where " + Condicion + Orden);
+            return conexion.ObtenerDatos("Select " + Campo + "from Provincias where " + Condicion + Orden);
+        }
+
+        public static DataTable ListadoProv(string condicion)
+        {
+            ConexionDb conexion = new ConexionDb();
+            return conexion.ObtenerDatos("select * from Provincias where " + condicion);
         }
     }
 }

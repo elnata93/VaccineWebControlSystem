@@ -15,7 +15,7 @@ namespace VaccineWebControlSystem.Consultas
         {
 
         }
-        Historiales historial = new Historiales();
+        
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
             Historiales historial = new Historiales();
@@ -36,13 +36,12 @@ namespace VaccineWebControlSystem.Consultas
                 }
             }
             DataTable dt = new DataTable();
-            dt = historial.Listado("h.Fecha,h.CentroSalud,h.ProvinciaId,h.MunicipioId,hd.VacunaId,hd.Dosis,hd.Fecha ", filtro, "");
-            //dt = historial.ListadoHist(FiltroTextBox.Text);
+            dt = historial.Listado("h.HistorialId,h.Fecha,h.CentroSalud,h.ProvinciaId,h.MunicipioId,hd.VacunaId,hd.Dosis,hd.Fecha ", filtro, "");
             ConsultaGridView.DataSource = dt;
             ConsultaGridView.DataBind();
         }
 
-        protected void ImprimirButton_Click1(object sender, EventArgs e)
+        protected void ReporteButton_Click(object sender, EventArgs e)
         {
             Reportes.VaccineReportViewer viewer = new Reportes.VaccineReportViewer();
             Response.Redirect("/Reportes/HistorialesReportViewer.aspx");

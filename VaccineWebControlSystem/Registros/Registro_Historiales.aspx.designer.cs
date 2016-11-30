@@ -49,6 +49,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.TextBox IdTextBox;
         
         /// <summary>
+        /// RegularExpressionValidatorID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorID;
+        
+        /// <summary>
         /// BuscarButton control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,24 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.TextBox CentroSaludTextBox;
         
         /// <summary>
+        /// RequiredFieldValidatorCentroSalud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorCentroSalud;
+        
+        /// <summary>
+        /// RegularExpressionValidatorCentro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorCentro;
+        
+        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,15 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ProvinciaDropDownList;
+        
+        /// <summary>
+        /// RangeValidatorProvincias control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorProvincias;
         
         /// <summary>
         /// Label4 control.
@@ -112,6 +148,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.DropDownList MunicipioDropDownList;
         
         /// <summary>
+        /// RangeValidatorMunicipios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorMunicipios;
+        
+        /// <summary>
         /// Label5 control.
         /// </summary>
         /// <remarks>
@@ -128,6 +173,15 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList PacienteDropDownList;
+        
+        /// <summary>
+        /// RangeValidatorPacientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorPacientes;
         
         /// <summary>
         /// Label6 control.
@@ -148,6 +202,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.DropDownList VacunaDropDownList;
         
         /// <summary>
+        /// RangeValidatorVacunas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorVacunas;
+        
+        /// <summary>
         /// Label8 control.
         /// </summary>
         /// <remarks>
@@ -164,6 +227,15 @@ namespace VaccineWebControlSystem.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DosisTextBox;
+        
+        /// <summary>
+        /// RequiredFieldValidatorDosis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDosis;
         
         /// <summary>
         /// Label9 control.
@@ -184,6 +256,15 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.TextBox FechaVacunaTextBox;
         
         /// <summary>
+        /// RangeValidatorFechaVacuna control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorFechaVacuna;
+        
+        /// <summary>
         /// AgregarButton control.
         /// </summary>
         /// <remarks>
@@ -202,30 +283,30 @@ namespace VaccineWebControlSystem.Registros {
         protected global::System.Web.UI.WebControls.GridView HistorialGridView;
         
         /// <summary>
-        /// Button1 control.
+        /// NuevoButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button NuevoButton;
         
         /// <summary>
-        /// Button2 control.
+        /// GuardarButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button GuardarButton;
         
         /// <summary>
-        /// Button3 control.
+        /// EliminarButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button EliminarButton;
     }
 }

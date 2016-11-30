@@ -15,7 +15,6 @@ namespace VaccineWebControlSystem.Consultas
         {
 
         }
-
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
             Ciudades ciudad = new Ciudades();
@@ -42,11 +41,13 @@ namespace VaccineWebControlSystem.Consultas
             ConsultaGridView.DataBind();
         }
 
-        protected void ReporteButton_Click1(object sender, EventArgs e)
+        protected void ReporteButton_Click(object sender, EventArgs e)
         {
             Reportes.VaccineReportViewer viewer = new Reportes.VaccineReportViewer();
             Response.Redirect("/Reportes/CiudadesReportViewer.aspx");
 
         }
+
+        
     }
 }

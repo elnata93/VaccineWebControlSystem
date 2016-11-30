@@ -46,29 +46,10 @@ namespace VaccineWebControlSystem.Consultas
             ConsultaGridView.DataBind();
         }
 
-        protected void ImprimirButton_Click1(object sender, EventArgs e)
+        protected void ReporteButton_Click(object sender, EventArgs e)
         {
             Reportes.VaccineReportViewer viewer = new Reportes.VaccineReportViewer();
-            //DataTable dt = new DataTable();
-            //dt = (DataTable)ConsultaGridView.DataSource;
-
             Response.Redirect("/Reportes/UsuariosReportViewer.aspx");
-
-            //Response.RedirectLocation = "/Registros/Ciudades.aspx";
-            //viewer.reporte = @"Reportes\UsuariosReport.rdlc";
-            //viewer.data = dt;
-            //viewer.LocalReport.Refresh();
-
-            //Report.VaccineReportViewer viewer = new Report.VaccineReportViewer();
-            //DataTable dt = new DataTable();
-
-            //dt = (DataTable)ConsultadataGridView.DataSource;
-            //dt.TableName = "Usuarios";
-
-            //viewer.reporte = "UsuariosReport.rdlc";
-            //viewer.data = dt;
-
-            //viewer.ShowDialog();
         }
     }
 }

@@ -163,23 +163,19 @@
         <!-- /#wrapper -->
 
     </form>
-
-    <!-- Map Section -->
-    <div id="map"></div>
-
     <!-- Footer -->
-    <fieldset>
-        <div class="container">
-
+    <footer>
+        <div class="form-group">
             <div class="row">
                 <div class="lib-footer">
                     <div class="container text-center">
                         <p>Copyright &copy; Your Website 2016</p>
+
                     </div>
                 </div>
             </div>
         </div>
-    </fieldset>
+    </footer>
 
     <!-- jQuery -->
     <script src="/js/jquery.js"></script>

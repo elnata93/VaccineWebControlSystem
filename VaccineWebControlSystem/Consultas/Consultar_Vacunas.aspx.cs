@@ -41,12 +41,11 @@ namespace VaccineWebControlSystem.Consultas
             ConsultaGridView.DataSource = dt;
             ConsultaGridView.DataBind();
         }
-
-        protected void ImprimirButton_Click1(object sender, EventArgs e)
+        
+        protected void ReporteButton_Click(object sender, EventArgs e)
         {
             Reportes.VaccineReportViewer viewer = new Reportes.VaccineReportViewer();
             Response.Redirect("/Reportes/VacunasReportViewer.aspx");
-                    
         }
     }
 }

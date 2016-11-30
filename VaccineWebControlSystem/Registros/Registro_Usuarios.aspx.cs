@@ -137,11 +137,11 @@ namespace VaccineWebControlSystem.Registros
                 if (user.Insertar())
                 {
                     Limpiar();
-                    Utility.ShowToastr(this, "Extio!", "Mensaje", "success");
+                    Utility.ShowToastr(this, "Usuario Guardado", "Mensaje", "success");
                 }
                 else
                 {
-                    Utility.ShowToastr(this, "error", "Mensaje", "error");
+                    Utility.ShowToastr(this, "Error al Guardar", "Mensaje", "error");
                 }
 
             }
@@ -154,11 +154,11 @@ namespace VaccineWebControlSystem.Registros
                     if (user.Editar())
                     {
                         Limpiar();
-                        Utility.ShowToastr(this, "Extio!", "Mensaje", "success");
+                        Utility.ShowToastr(this, "Usuario Editado", "Mensaje", "success");
                     }
                     else
                     {
-                        Utility.ShowToastr(this, "error", "Mensaje", "error");
+                        Utility.ShowToastr(this, "Error al Editar", "Mensaje", "error");
                     }
                 }
 
@@ -195,9 +195,9 @@ namespace VaccineWebControlSystem.Registros
 
         protected void SubirButton_Click(object sender, EventArgs e)
         {
-            string nombre = "capture.jpg";
-            FotoFileUpload.SaveAs(Server.MapPath("~/Imagenes" + nombre));
-            FotoImage.ImageUrl = nombre;
+            //string nombre = "capture.jpg";
+            //FotoFileUpload.SaveAs(Server.MapPath("~/Imagenes" + nombre));
+            //FotoImage.ImageUrl = nombre;
         }
     }
 }

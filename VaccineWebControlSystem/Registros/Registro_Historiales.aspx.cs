@@ -129,10 +129,6 @@ namespace VaccineWebControlSystem.Registros
                     Utility.ShowToastr(this, "Id no Existe!", "Mensaje", "info");
                 }
             }
-            else
-            {
-                Utility.ShowToastr(this, "Id no Encontrado!", "Mensaje", "info");
-            }
         }
 
         private void Limpiar()
@@ -177,11 +173,11 @@ namespace VaccineWebControlSystem.Registros
                 if (historial.Insertar())
                 {
                     Limpiar();
-                    Utility.ShowToastr(this, "Extio!", "Mensaje", "success");
+                    Utility.ShowToastr(this, "Historial Guardado", "Mensaje", "success");
                 }
                 else
                 {
-                    Utility.ShowToastr(this, "Error!", "Mensaje", "error");
+                    Utility.ShowToastr(this, "Error al Guardar", "Mensaje", "error");
                 }
                 Limpiar();
             }
@@ -189,15 +185,16 @@ namespace VaccineWebControlSystem.Registros
             {
                 if (Utility.ConvertirToInt(IdTextBox.Text) > 0)
                 {
+                    
                     LlenarDatos(historial);
                     if (historial.Editar())
                     {
                         Limpiar();
-                        Utility.ShowToastr(this, "Extio!", "Mensaje", "success");
+                        Utility.ShowToastr(this, "Historial Editado", "Mensaje", "success");
                     }
                     else
                     {
-                        Utility.ShowToastr(this, "Error!", "Mensaje", "error");
+                        Utility.ShowToastr(this, "Error al Editar", "Mensaje", "error");
                     }
                     
                 }

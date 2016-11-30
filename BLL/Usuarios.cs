@@ -11,7 +11,6 @@ namespace BLL
     {
         ConexionDb conexion = new ConexionDb();
         public int UsuarioId { get; set; }
-        public string Imagen { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public int Sexo { get; set; }
@@ -28,7 +27,6 @@ namespace BLL
         public Usuarios()
         {
             this.UsuarioId = 0;
-            this.Imagen = "";
             this.Nombre = "";
             this.Apellido = "";
             this.Sexo = 0;
@@ -56,10 +54,9 @@ namespace BLL
             return retorno;
         }
 
-        public Usuarios(int usuarioid,int ciudadid,string imagen,string nombre,string apellido,int sexo,string direccion,string cedula,string telefono,string email,string nombreusuario,string tipousuario,string contrasena)
+        public Usuarios(int usuarioid,int ciudadid,string nombre,string apellido,int sexo,string direccion,string cedula,string telefono,string email,string nombreusuario,string tipousuario,string contrasena)
         {
             this.UsuarioId = usuarioid;
-            this.Imagen = imagen;
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.Direccion = direccion;
@@ -78,8 +75,8 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("insert into Usuarios(Imagen,Nombres,Apellidos,Sexo,Direccion,Cedula,Telefono,Email,CiudadId,NombresUsuarios,TipoUsuario,Contrasena) values('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},'{9}','{10}','{11}')", 
-                    this.Imagen,this.Nombre,this.Apellido,this.Sexo,this.Direccion,this.Cedula,this.Telefono,this.Email,this.CiudadId,this.NommbreUsuario,this.TipoUsuario,this.Contrasena));
+                retorno = conexion.Ejecutar(String.Format("insert into Usuarios(Nombres,Apellidos,Sexo,Direccion,Cedula,Telefono,Email,CiudadId,NombresUsuarios,TipoUsuario,Contrasena) values('{0}','{1}',{2},'{3}','{4}','{5}','{6}',{7},'{8}','{9}','{10}')", 
+                    this.Nombre,this.Apellido,this.Sexo,this.Direccion,this.Cedula,this.Telefono,this.Email,this.CiudadId,this.NommbreUsuario,this.TipoUsuario,this.Contrasena));
             }
             catch (Exception ex)
             {
@@ -93,8 +90,8 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("update Usuarios set Imagem='{0}',Nombres='{1}',Apellidos='{2}',Sexo={3},Direccion='{4}',Cedula='{5}',Telefono='{6}',Email='{7}',CiudadId={8},NombreUsuarios='{9}',TipoUsuario='{10}',Contrasena='{11}' where UsuarioId={12} ",
-                    this.Imagen, this.Nombre, this.Apellido, this.Sexo, this.Direccion, this.Cedula, this.Telefono, this.Email, this.CiudadId, this.NommbreUsuario, this.TipoUsuario, this.Contrasena,this.UsuarioId));
+                retorno = conexion.Ejecutar(String.Format("update Usuarios set Nombres='{0}',Apellidos='{1}',Sexo={2},Direccion='{3}',Cedula='{4}',Telefono='{5}',Email='{6}',CiudadId={7},NombreUsuarios='{8}',TipoUsuario='{9}',Contrasena='{10}' where UsuarioId={11} ",
+                     this.Nombre, this.Apellido, this.Sexo, this.Direccion, this.Cedula, this.Telefono, this.Email, this.CiudadId, this.NommbreUsuario, this.TipoUsuario, this.Contrasena,this.UsuarioId));
             }
             catch (Exception ex)
             {
@@ -129,7 +126,6 @@ namespace BLL
                 {
                     
                     this.UsuarioId = (int)data.Rows[0]["UsuarioId"];
-                    this.Imagen = data.Rows[0]["Imagen"].ToString();
                     this.Nombre = data.Rows[0]["Nombres"].ToString();
                     this.Apellido = data.Rows[0]["Apellidos"].ToString();
                     this.Sexo = (int)data.Rows[0]["Sexo"];

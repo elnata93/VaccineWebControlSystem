@@ -16,17 +16,21 @@
                         <asp:Label ID="Label1" runat="server" Text="ID"></asp:Label>
                         <div class="form-group">
                             <div class="col-md-11">
-                                <asp:TextBox ID="IdTextBox" Cssclass="form-control " placeholder="ID" runat="server" />
+                                <asp:TextBox ID="IdTextBox" CssClass="form-control " placeholder="ID" runat="server" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorID" runat="server" ErrorMessage="Solo se puede ingresar numeros" ForeColor="Red" ValidationExpression="[0-9]{1,9}(\.[0-9]{0,2})?$" ValidationGroup="B" ControlToValidate="IdTextBox"></asp:RegularExpressionValidator>
+
                             </div>
                             <div class="col-md-1">
-                                <asp:Button ID="BuscarButton" CssClass="btn btn-info" runat="server" OnClick="BuscarButton_Click" Text="Buscar" />
+                                <asp:Button ID="BuscarButton" CssClass="btn btn-info" runat="server" OnClick="BuscarButton_Click" Text="Buscar" ValidationGroup="B" />
                             </div>
                         </div>
                         <asp:Label ID="Label2" runat="server" Text="Descripcion"></asp:Label>
-                        <asp:TextBox ID="DescripcionTextBox" Cssclass="form-control" placeholder="Descripcion" runat="server" />
+                        <asp:TextBox ID="DescripcionTextBox" CssClass="form-control" placeholder="Descripcion" runat="server" />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorDescripcion" runat="server" ErrorMessage="Solo se puede ingresar Letras" ControlToValidate="DescripcionTextBox" ForeColor="Red" ValidationExpression="^[A-ZÑ]+[a-zñ\s]+[a-zñ]$" ValidationGroup="A"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorTextBoxDescripcion" runat="server" ControlToValidate="DescripcionTextBox" ErrorMessage="Campo requerido" ForeColor="Red" ValidationGroup="A"></asp:RequiredFieldValidator>
+
                     </div>
-                    <%--<link href="/Reutilizable/StarRegister.aspx" rel="stylesheet" />
-                    --%>
+
                     <div class="form-horizontal col-lg-12 " role="form">
                         <br />
                         <br />
@@ -34,7 +38,7 @@
                         <div class="form-group ">
                             <div class="container text-center ">
                                 <asp:Button ID="NuevoButton" CssClass="btn btn-primary" runat="server" OnClick="NuevoButton_Click" Text="Nuevo" />
-                                <asp:Button ID="GuardarButton" CssClass="btn btn-success" runat="server" OnClick="GuardarButton_Click" Text="Guardar" />
+                                <asp:Button ID="GuardarButton" CssClass="btn btn-success" runat="server" OnClick="GuardarButton_Click" Text="Guardar" ValidationGroup="A" />
                                 <asp:Button ID="EliminarButton" CssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="EliminarButton_Click" />
                             </div>
                         </div>

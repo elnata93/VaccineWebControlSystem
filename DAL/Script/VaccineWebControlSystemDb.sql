@@ -1,8 +1,4 @@
 
-create table TiposUsuarios(TipoUsuarioId int primary key identity(1,1),
-Descripcion varchar(20)
-);
-go
 create table Provincias(ProvinciaId int primary key identity(1,1),
 Descripcion varchar(100)
 );
@@ -16,8 +12,6 @@ Descripcion varchar(100)
 );
 go
 create table Usuarios(UsuarioId int primary key identity(1,1),
-Fecha date,
-Imagen varchar(300),
 Nombres varchar(30),
 Apellidos varchar(30),
 Sexo int,

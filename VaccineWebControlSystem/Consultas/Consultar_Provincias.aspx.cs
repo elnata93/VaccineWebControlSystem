@@ -46,7 +46,6 @@ namespace VaccineWebControlSystem.Consultas
         {
             Reportes.VaccineReportViewer viewer = new Reportes.VaccineReportViewer();
             Response.Redirect("/Reportes/ProvinciasReportViewer.aspx");
-
         }
     }
 }

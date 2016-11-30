@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <div class="form-horizontal col-md-12" role="form">
 						<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                        <rsweb:ReportViewer ID="UsuariosreportViewer" runat="server" Width="100%"></rsweb:ReportViewer>
+                        <rsweb:ReportViewer ID="UsuarioReportViewer" runat="server" Width="100%"></rsweb:ReportViewer>
 
 					</div>
 			</div>		

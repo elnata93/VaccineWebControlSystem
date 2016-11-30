@@ -22,12 +22,12 @@ namespace VaccineWebControlSystem.Reportes {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// UsuariosreportViewer control.
+        /// UsuarioReportViewer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer UsuariosreportViewer;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer UsuarioReportViewer;
     }
 }

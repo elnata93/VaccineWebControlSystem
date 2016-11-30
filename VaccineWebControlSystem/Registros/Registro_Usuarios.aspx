@@ -23,13 +23,13 @@
             <div class="panel-body">
                 <div class="form-horizontal col-md-12" role="form">
 
-                    <div class="form-group ">
+                    <%--<div class="form-group ">
                         <div class="container  ">
                             <asp:Image ID="FotoImage" runat="server" />
                             <asp:FileUpload ID="FotoFileUpload" runat="server" />
                             <asp:Button ID="SubirButton" runat="server" Text="Upload" OnClick="SubirButton_Click" />
                         </div>
-                    </div>
+                    </div>--%>
 
 
                     <br />
@@ -40,9 +40,11 @@
                         <div class="form-group">
                             <div class="col-md-11">
                                 <asp:TextBox ID="IdTextBox" CssClass="form-control " placeholder="ID" runat="server" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorID" runat="server" ErrorMessage="Solo se puede ingresar numeros" ForeColor="Red" ValidationExpression="[0-9]{1,9}(\.[0-9]{0,2})?$" ValidationGroup="B" ControlToValidate="IdTextBox"></asp:RegularExpressionValidator>
+
                             </div>
                             <div class="col-md-1">
-                                <asp:Button ID="BuscarButton" CssClass="btn btn-info" runat="server" OnClick="BuscarButton_Click" Text="Buscar" />
+                                <asp:Button ID="BuscarButton" CssClass="btn btn-info" runat="server" OnClick="BuscarButton_Click" Text="Buscar" ValidationGroup="B" />
                             </div>
                         </div>
                         <asp:Label ID="Label2" runat="server" Text="Nombre"></asp:Label>

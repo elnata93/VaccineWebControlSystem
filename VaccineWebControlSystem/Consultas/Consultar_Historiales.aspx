@@ -47,7 +47,7 @@
                         <asp:TextBox ID="FiltroTextBox" runat="server" CssClass="form-control" pleaceholder="Filtrar"></asp:TextBox>
                     </div>
                     <div class="col-md-1">
-                        <asp:Button ID="Button1" CssClass="btn btn-info" runat="server" Text="Buscar" />
+                        <asp:Button ID="Button1" CssClass="btn btn-info" runat="server" Text="Buscar" OnClick="BuscarButton_Click"/>
                     </div>
                     <br />
                     <div class="container text-center col-md-10">
@@ -60,7 +60,7 @@
                     </asp:GridView>
 
                     <div class="container col-md-11">
-                        <asp:Button ID="ReporteButton" CssClass="btn btn-danger" runat="server"  Text="Reporte" />
+                        <asp:Button ID="ReporteButton" CssClass="btn btn-danger" runat="server" Text="Reporte" OnClick="ReporteButton_Click" />
                     </div>
                 </div>
             </div>

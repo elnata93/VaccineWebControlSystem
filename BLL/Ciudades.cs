@@ -94,7 +94,13 @@ namespace BLL
             string OrdenFinal = "";
             if (!Orden.Equals(""))
                 OrdenFinal = "Order by" + Orden;
-            return conexion.ObtenerDatos("Select" + Campo + "from Ciudades where " + Condicion + Orden);
+            return conexion.ObtenerDatos("Select " + Campo + "from Ciudades where " + Condicion + Orden);
+        }
+
+        public static DataTable ListadoCiud(string condicion)
+        {
+            ConexionDb conexion = new ConexionDb();
+            return conexion.ObtenerDatos("select * from Ciudades where " + condicion);
         }
     }
 }

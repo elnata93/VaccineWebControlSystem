@@ -94,7 +94,13 @@ namespace BLL
             string OrdenFinal = "";
             if (!Orden.Equals(""))
                 OrdenFinal = "Order by" + Orden;
-            return conexion.ObtenerDatos("Select" + Campo + "from Municipios where " + Condicion + Orden);
+            return conexion.ObtenerDatos("Select " + Campo + "from Municipios where " + Condicion + Orden);
+        }
+
+        public static DataTable ListadoMun(string condicion)
+        {
+            ConexionDb conexion  = new ConexionDb();
+            return conexion.ObtenerDatos("select * from Municipios where " + condicion);
         }
     }
 }

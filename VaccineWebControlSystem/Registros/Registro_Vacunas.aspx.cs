@@ -123,9 +123,7 @@ namespace VaccineWebControlSystem.Registros
                     else
                     {
                         Utility.ShowToastr(this, "Error Vacuna no se Elimino", "Mensaje", "error");
-
                     }
-
                 }
                 else
                 {

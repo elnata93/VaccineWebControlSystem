@@ -150,7 +150,7 @@ namespace BLL
         public static DataTable ListadoHist(string Condicion)
         {
             ConexionDb conexion = new ConexionDb();
-            return conexion.ObtenerDatos("Select h.Fecha,h.CentroSalud,h.ProvinciaId,h.MunicipioId,h.PacienteId,hv.VacunaId,hv.Dosis,hv.Fecha from Historiales h inner join HiatorialesVacunas hv on h.HistorialId=hv.HistorialId where " + Condicion);
+            return conexion.ObtenerDatos("Select h.HistorialId,h.Fecha,h.CentroSalud,h.ProvinciaId,h.MunicipioId,h.PacienteId,hd.VacunaId,hd.Dosis,hd.Fecha from Historiales h inner join HistorialDetalle hd on h.HistorialId=hd.HistorialId where " + Condicion);
 
         }
         
