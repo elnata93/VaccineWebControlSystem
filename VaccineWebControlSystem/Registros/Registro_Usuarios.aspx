@@ -57,8 +57,8 @@
                         <br />
                         <asp:Label ID="Label13" runat="server" Text="Sexo:"></asp:Label>
                         <br />
-                        <asp:RadioButton ID="MasculinoRadioButton" Checked="True" GroupName="RadioGroup1" runat="server" Text="Masculino" />
-                        <asp:RadioButton ID="FemeninoRadioButton" GroupName="RadioGroup1" runat="server" Text="Femenino" />
+                        <asp:RadioButton ID="MasculinoRadioButton" Checked="True" GroupName="RadioGroup1" runat="server" Text="Masculino" ValidationGroup="A" />
+                        <asp:RadioButton ID="FemeninoRadioButton" GroupName="RadioGroup1" runat="server" Text="Femenino" ValidationGroup="A" />
                         <br />
                         <%-- Validate RadioButton --%>
 
