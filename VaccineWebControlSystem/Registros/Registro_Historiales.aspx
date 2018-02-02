@@ -7,7 +7,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">Registro de Historial</div>
             <div class="panel-body">
-                <div class="form-horizontal col-md-12" role="form">
+                <div class="form-horizontal col-md-12" role="form"> 
                     
                     <div class="form-group ">
                         <div class="col-md-10 ">
