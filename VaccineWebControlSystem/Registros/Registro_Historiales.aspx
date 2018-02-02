@@ -71,20 +71,23 @@
                             <asp:TextBox ID="DosisTextBox" runat="server" CssClass="form-control " placeholder="Dosis"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorDosis" runat="server" ErrorMessage="Campo requerido" ControlToValidate="DosisTextBox" ForeColor="Red" ValidationGroup="C"></asp:RequiredFieldValidator>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-3">
-                                <asp:Label ID="Label9" runat="server" Text="Fecha:"></asp:Label>
-                                <asp:TextBox ID="FechaVacunaTextBox" runat="server" CssClass="form-control" Type="date" TextMode="Date"></asp:TextBox>
-<%--                                <asp:RequiredFieldValidator ID="RangeValidatorFechaVacuna" runat="server" ErrorMessage="Seleccione la fecha" ControlToValidate="FechaVacunaTextBox" ForeColor="Red" ValidationGroup="C"></asp:RequiredFieldValidator>--%>
-
-                            </div>
-                            <div class="col-md-8">
-                            </div>
-                            <div class="col-md-1">
-                                <br />
-                                <asp:Button ID="AgregarButton" CssClass="btn btn-warning " runat="server" Text="Agregar" OnClick="AgregarButton_Click" ValidationGroup="C" />
-                            </div>
+                        <div class="form-group  ">
+                                <div class="form-group  ">
+                                    <div class=" col-md-3">
+                                        <asp:Label ID="Label9" runat="server" Text="Fecha:"></asp:Label>
+                                        <asp:TextBox ID="FechaVacunaTextBox" runat="server" CssClass="form-control" Type="date" TextMode="Date"></asp:TextBox>
+        <%--                                <asp:RequiredFieldValidator ID="RangeValidatorFechaVacuna" runat="server" ErrorMessage="Seleccione la fecha" ControlToValidate="FechaVacunaTextBox" ForeColor="Red" ValidationGroup="C"></asp:RequiredFieldValidator>--%>
+                                   </div>
+                                    <div class="col-md-8">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <br />
+                                        <div class="form-group">
+                                            <asp:Button ID="AgregarButton" CssClass="btn btn-warning " runat="server" Text="Agregar" OnClick="AgregarButton_Click" ValidationGroup="C" />
+                                        </div>
+                                        </div>
+                                </div>
+                                
                         </div>
                     </div>
                 </div>
