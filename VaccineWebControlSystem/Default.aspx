@@ -3,7 +3,5 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-        <img src="image/Vaccine-in-vial-with-syringe.jpg" width="1330px" height="640px" />
-
+        <img src="image/Vaccine-in-vial-with-syringe.jpg" width="65%"  height="65%"/> 
 </asp:Content>
